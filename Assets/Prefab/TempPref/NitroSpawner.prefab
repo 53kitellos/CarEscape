@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8171531080117394750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8171531080117394744}
+  - component: {fileID: 8171531080117394745}
+  m_Layer: 0
+  m_Name: NitroSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8171531080117394744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171531080117394750}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 4.2146873, y: 0.48, z: 7.758836}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &8171531080117394745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171531080117394750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60eddb59d71a0842a0c74d39fecba36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nitro: {fileID: 7691884673427136250, guid: aa6c362aaf25b5e43b28f2576962dcd0, type: 3}
+  _spawnPoints:
+  - {x: -2.2, y: 1.38, z: 7.149129}
+  - {x: 15.15, y: 1.38, z: 26.57}
+  - {x: 60.2, y: 1.38, z: 6.95}
+  - {x: 8.9, y: 1.38, z: -18.71}
+  - {x: 8.9, y: 1.38, z: -50.84}
+  - {x: 50.5, y: 1.38, z: -50.84}
+  - {x: 50.5, y: -69, z: -83.4}
+  - {x: 50.5, y: -69, z: 57.5}
+  - {x: -46.2, y: -69, z: 125}
+  - {x: 95, y: -69, z: 125}
+  - {x: 95, y: -69, z: 213}
+  - {x: 144, y: -69, z: 23.8}
+  - {x: 292.1, y: -69, z: -4.5}
+  - {x: 292.1, y: -69, z: -113.7}
+  - {x: 53.546448, y: 1.08, z: -47.58}
