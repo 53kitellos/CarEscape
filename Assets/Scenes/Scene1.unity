@@ -1538,7 +1538,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 40 SECONDS ESCAPE
+  m_Text: 45 SECONDS ESCAPE
 --- !u!222 &424687674
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1839,7 +1839,9 @@ MonoBehaviour:
     D - Turn
     Right
 
-    Space - Handbrake'
+    Space - Handbrake
+
+    Shift - Nitro'
 --- !u!222 &462516163
 CanvasRenderer:
   m_ObjectHideFlags: 0
