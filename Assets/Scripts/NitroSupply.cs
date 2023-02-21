@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class NitroSupply : MonoBehaviour
 {
-    private float _lifeTime = 5;
+    private float _lifeTime = 3;
     private float _currentLifeTime;
+
+    private void Start()
+    {
+        NitroPointer.Instance.AddToList(this);
+    }
 
     private void Update()
     {
@@ -17,11 +22,11 @@ public class NitroSupply : MonoBehaviour
         {
             SelfDetroy();
         }
-
     }
 
     public void SelfDetroy() 
     {
+        NitroPointer.Instance.RemoveFromList(this);
         Destroy(gameObject);
-    }
+    } 
 }

@@ -1,52 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NitroSupplyAnimation : MonoBehaviour {
-
-    public bool isAnimated = false;
-    public bool isRotating = false;
-    public bool isScaling = false;
-
-    public Vector3 rotationAngle;
-    public float rotationSpeed;
-   
-    public Vector3 startScale;
-    public Vector3 endScale;
-
+public class NitroSupplyAnimation : MonoBehaviour
+{
+    private Vector3 _rotationAngle = new Vector3(0,0,10);
+    private Vector3 startScale = new Vector3(1,1,1);
+    private Vector3 endScale = new Vector3(1.5f, 1.5f, 1.5f);
+    private float _rotationSpeed = 10;
+    private float _scaleSpeed = 1;
+    private float scaleRate = 0.5f;
+    private float _scaleTimer;
     private bool scalingUp = true;
-    public float scaleSpeed;
-    public float scaleRate;
-    private float scaleTimer;
 
-	void LateUpdate () {
-        
-        if(isAnimated)
+    void LateUpdate ()
+    {
+        transform.Rotate(_rotationAngle * _rotationSpeed * Time.deltaTime);
+        _scaleTimer += Time.deltaTime;
+
+        if (scalingUp)
         {
-            if(isRotating)
-            {
-                transform.Rotate(rotationAngle * rotationSpeed * Time.deltaTime);
-            }
-            
-            if(isScaling)
-            {
-                scaleTimer += Time.deltaTime;
-
-                if (scalingUp)
-                {
-                    transform.localScale = Vector3.Lerp(transform.localScale, endScale, scaleSpeed * Time.deltaTime);
-                }
-                else if (!scalingUp)
-                {
-                    transform.localScale = Vector3.Lerp(transform.localScale, startScale, scaleSpeed * Time.deltaTime);
-                }
-
-                if(scaleTimer >= scaleRate)
-                {
-                    if (scalingUp) { scalingUp = false; }
-                    else if (!scalingUp) { scalingUp = true; }
-                    scaleTimer = 0;
-                }
-            }
+            transform.localScale = Vector3.Lerp(transform.localScale, endScale, _scaleSpeed * Time.deltaTime);
         }
-	}
+        else if (!scalingUp)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, startScale, _scaleSpeed * Time.deltaTime);
+        }
+
+        if (_scaleTimer >= scaleRate)
+        {
+            if (scalingUp)
+            {
+                scalingUp = false;
+            }
+            else if (!scalingUp)
+            {
+                scalingUp = true;
+            }
+
+            _scaleTimer = 0;
+        }
+    }
 }

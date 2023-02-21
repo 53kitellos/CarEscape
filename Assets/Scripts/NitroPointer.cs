@@ -4,35 +4,94 @@ using UnityEngine;
 
 public class NitroPointer : MonoBehaviour
 {
-    [SerializeField] Transform _carTransform;
-    [SerializeField] Transform _arrowPoint;
-    [SerializeField] Camera _camera;
+    [SerializeField] private ArrowIcon _arrowPrefab;
+    [SerializeField] private Transform _carTransform;
+    [SerializeField] private Camera _camera;
 
-    private void Update()
+    private Dictionary<NitroSupply, ArrowIcon> _nitroObjects = new Dictionary<NitroSupply, ArrowIcon>();
+
+    public static NitroPointer Instance;
+
+    private void Awake()
     {
-        Vector3 fromNitroToEnemy = transform.position - _carTransform.position;
-        Ray ray = new Ray(_carTransform.position, fromNitroToEnemy);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 
+    public void AddToList(NitroSupply nitro)
+    {
+        ArrowIcon newArrow = Instantiate(_arrowPrefab, transform);
+        _nitroObjects.Add(nitro, newArrow);
+    }
+
+    public void RemoveFromList(NitroSupply nitro)
+    {
+        Destroy(_nitroObjects[nitro].gameObject);
+        _nitroObjects.Remove(nitro);
+    }
+
+    private void LateUpdate()
+    {
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
 
-        float minDistance = Mathf.Infinity;
-
-        for (int i = 0; i < planes.Length; i++)
+        foreach (var currentNitro in _nitroObjects)
         {
-            if (planes[i].Raycast(ray, out float distance))
+            NitroSupply nitro = currentNitro.Key;
+            ArrowIcon arrowIcon = currentNitro.Value;
+            Vector3 toCar = nitro.transform.position - _carTransform.position;
+            Ray ray = new Ray(_carTransform.position, toCar);
+            Debug.DrawRay(_carTransform.position, toCar);
+            float rayMinDistance = Mathf.Infinity;
+            int index = 0;
+
+            for (int i = 0; i < 4; i++)
             {
-                if (distance < minDistance)
+                if (planes[i].Raycast(ray, out float distance))
                 {
-                    minDistance = distance;
+                    if (distance < rayMinDistance)
+                    {
+                        rayMinDistance = distance;
+                        index = i;
+                    }
                 }
             }
 
+            rayMinDistance = Mathf.Clamp(rayMinDistance, 0, toCar.magnitude);
+            Vector3 worldPosition = ray.GetPoint(rayMinDistance);
+            Vector3 position = _camera.WorldToScreenPoint(worldPosition);
+            Quaternion rotation = ArrowRotation(index);
+
+            if (toCar.magnitude > rayMinDistance)
+            {
+                arrowIcon.Show();
+            }
+            else
+            {
+                arrowIcon.Hide();
+            }
+
+            arrowIcon.SetIconPosition(position, rotation);
         }
 
-        minDistance = Mathf.Clamp(minDistance,0, fromNitroToEnemy.magnitude);
+    }
+    
+    private Quaternion ArrowRotation(int planeIndex) 
+    {
+        if (planeIndex == 0)
+            return Quaternion.Euler(0f,0f,90f);
+        else if (planeIndex == 1)
+            return Quaternion.Euler(0f, 0f, -90f);
+        else if (planeIndex == 2)
+            return Quaternion.Euler(0f, 0f, 180f);
+        else if (planeIndex == 3)
+            return Quaternion.Euler(0f, 0f, 0f);
 
-        Vector3 worldPosition = ray.GetPoint(minDistance);
-
-        _arrowPoint.position = _camera.WorldToScreenPoint(worldPosition);
+        return Quaternion.identity;
     }
 }

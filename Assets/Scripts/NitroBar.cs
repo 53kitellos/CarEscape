@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NitroBar : MonoBehaviour
 {
-    [SerializeField] private PlayerCar _car;
+    [SerializeField] private PlayerCarControl _car;
     [SerializeField] private Slider _nitroBar;
 
     private float _currentNitroValue = 0;

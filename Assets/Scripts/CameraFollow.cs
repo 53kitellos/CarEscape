@@ -13,7 +13,8 @@ public class CameraFollow : MonoBehaviour {
 	Vector3 initialCarPosition;
 	Vector3 absoluteInitCameraPosition;
 
-	void Start(){
+	void Start()
+	{
 		initialCameraPosition = gameObject.transform.position;
 		initialCarPosition = carTransform.position;
 		absoluteInitCameraPosition = initialCameraPosition - initialCarPosition;
@@ -21,15 +22,11 @@ public class CameraFollow : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		//Look at car
-		Vector3 _lookDirection = (new Vector3(carTransform.position.x, carTransform.position.y, carTransform.position.z)) - transform.position;
-		Quaternion _rot = Quaternion.LookRotation(_lookDirection, Vector3.up);
-		transform.rotation = Quaternion.Lerp(transform.rotation, _rot, lookSpeed * Time.deltaTime);
+		Vector3 lookDirection = (new Vector3(carTransform.position.x, carTransform.position.y, carTransform.position.z)) - transform.position;
+		Quaternion rot = Quaternion.LookRotation(lookDirection, Vector3.up);
+		transform.rotation = Quaternion.Lerp(transform.rotation, rot, lookSpeed * Time.deltaTime);
 
-		//Move to car
-		Vector3 _targetPos = absoluteInitCameraPosition + carTransform.transform.position;
-		transform.position = Vector3.Lerp(transform.position, _targetPos, followSpeed * Time.deltaTime);
-
+		Vector3 targetPos = absoluteInitCameraPosition + carTransform.transform.position;
+		transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
 	}
-
 }

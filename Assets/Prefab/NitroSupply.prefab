@@ -1,51 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2614486519903566167
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 642611221430776225}
-  - component: {fileID: 3353563648757332057}
-  m_Layer: 0
-  m_Name: targetPointer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &642611221430776225
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2614486519903566167}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7720339427003934407}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3353563648757332057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2614486519903566167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eafd4c45771f0a4a9a25593f3f872bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _carTransform: {fileID: 0}
-  _camera: {fileID: 0}
 --- !u!1 &7721878627224600049
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +16,7 @@ GameObject:
   - component: {fileID: 7691884673427136245}
   m_Layer: 0
   m_Name: NitroSupply
-  m_TagString: Untagged
+  m_TagString: Nitro
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,8 +32,7 @@ Transform:
   m_LocalPosition: {x: -2.2, y: 1.38, z: 7.149129}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 642611221430776225}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -145,15 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff967b7ed48f2441bcf509edf6b889a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAnimated: 1
-  isRotating: 1
-  isScaling: 1
-  rotationAngle: {x: 0, y: 0, z: 10}
-  rotationSpeed: 10
-  startScale: {x: 1, y: 1, z: 1}
-  endScale: {x: 1.5, y: 1.5, z: 1.5}
-  scaleSpeed: 1
-  scaleRate: 0.5
 --- !u!114 &7691884673427136250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47f7bbecd325774ebdbdd34049a0cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nitroCollected: {fileID: 0}
 --- !u!64 &7691884673427136245
 MeshCollider:
   m_ObjectHideFlags: 0
