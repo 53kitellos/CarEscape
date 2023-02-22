@@ -8,6 +8,8 @@ public class ArrowIcon : MonoBehaviour
     [SerializeField] private Image _image;
 
     private bool _isShown = true;
+    private Coroutine _hideArrow;
+    private Coroutine _showArrow;
 
     private void Awake()
     {
@@ -27,10 +29,11 @@ public class ArrowIcon : MonoBehaviour
             return;
         
         _isShown = true;
-        StopCoroutine(ShowProcess());
-        StopCoroutine(HideProcess());
 
-        StartCoroutine(ShowProcess());
+        if (_showArrow != null)
+            StopCoroutine(_showArrow);
+
+        _showArrow = StartCoroutine(ShowArrowProcess());
     }
 
     public void Hide()
@@ -39,13 +42,14 @@ public class ArrowIcon : MonoBehaviour
             return;
        
         _isShown = false;
-        StopCoroutine(ShowProcess());
-        StopCoroutine(HideProcess());
 
-        StartCoroutine(HideProcess());
+        if (_hideArrow != null)
+            StopCoroutine(_hideArrow);
+
+        _hideArrow = StartCoroutine(HideArrowProcess());
     }
 
-    private IEnumerator ShowProcess()
+    private IEnumerator ShowArrowProcess()
     {
         _image.enabled = true;
         transform.localScale = Vector3.zero;
@@ -59,7 +63,7 @@ public class ArrowIcon : MonoBehaviour
         transform.localScale = Vector3.one;
     }
 
-    private IEnumerator HideProcess() 
+    private IEnumerator HideArrowProcess() 
     {
         for (float i = 0; i < 1f; i += Time.deltaTime * 4f)
         {
@@ -69,4 +73,6 @@ public class ArrowIcon : MonoBehaviour
 
         _image.enabled = false;
     }
-}
+}  //2. StopCoroutine(ShowProcess()); StopCoroutine(HideProcess());
+   // орутину лучше сохран€ть и перед стартом новой останавливать старую, чтобы они не накладывались друг на друга.
+   // ¬ методе 
