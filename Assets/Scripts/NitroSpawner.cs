@@ -16,7 +16,9 @@ public class NitroSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Nitro").Length < 2)
+        NitroSupply[] nitroSupplies = FindObjectsOfType<NitroSupply>();
+
+        if (nitroSupplies.Length < 2)
         {
             NitroSupply newNitro = Instantiate(_nitro, _spawnPoints[_currentPointIndex++], transform.rotation);
 

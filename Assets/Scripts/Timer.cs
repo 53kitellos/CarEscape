@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private Text _timeLeft;
-
     private float _roundTime = 45;
     private bool _isEnded = false;
+
     public event UnityAction TimeEnded;
 
     private void Start()

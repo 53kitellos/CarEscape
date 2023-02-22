@@ -228,6 +228,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 488964, guid: 51c576822a7a42345b47955233d25adb, type: 3}
   m_PrefabInstance: {fileID: 1680359208}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &82259935 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8514757083281811746, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &135872536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -499,6 +504,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160066912}
   m_Mesh: {fileID: 3613567641014311022, guid: aa35326e084c5774b9fea1733afca70f, type: 3}
+--- !u!96 &169057228 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 3095465498825560875, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &182226367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,6 +2169,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 490140, guid: fc9bdb938304f4e45bc5977a6f3058df, type: 3}
   m_PrefabInstance: {fileID: 1062597691}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &580421394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6334162668021921843, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &598861902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,6 +2684,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2b4c92a59cf1a441bf008ca26395efa, type: 3}
+--- !u!1 &685669376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3689610635858221861, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &689600284
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,6 +2805,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689600284}
   m_Mesh: {fileID: 3613567641014311022, guid: aa35326e084c5774b9fea1733afca70f, type: 3}
+--- !u!1 &702530769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2101067997245549362, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &724822309
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,6 +2845,7 @@ MonoBehaviour:
   _finishSound: {fileID: 1978945948}
   _engineSound: {fileID: 1693469554}
   _tyreScreechSound: {fileID: 1765659090}
+  _mainSountrack: {fileID: 2117601934}
 --- !u!4 &724822311
 Transform:
   m_ObjectHideFlags: 0
@@ -2838,6 +2864,7 @@ Transform:
   - {fileID: 182226368}
   - {fileID: 2147370946}
   - {fileID: 1978945949}
+  - {fileID: 2117601935}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2987,6 +3014,11 @@ Transform:
   m_Father: {fileID: 1331393350}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!146 &768918285 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 2765453268038761090, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &778210614
 GameObject:
   m_ObjectHideFlags: 0
@@ -3486,6 +3518,16 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947214807}
   m_Mesh: {fileID: 3613567641014311022, guid: aa35326e084c5774b9fea1733afca70f, type: 3}
+--- !u!96 &976561783 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 3095465496778138093, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!146 &992725465 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 3739968509392709667, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &999023778
 GameObject:
   m_ObjectHideFlags: 0
@@ -3883,6 +3925,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!198 &1046826483 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8514757083544049190, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1054823619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 436152, guid: d995f875a84ca0f4c952dd644d6dbd0e, type: 3}
@@ -4381,6 +4428,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216418391}
   m_CullTransparentMesh: 1
+--- !u!146 &1221895874 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 4369136208295534932, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1230345163
 GameObject:
   m_ObjectHideFlags: 0
@@ -5841,6 +5893,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469105319}
   m_Mesh: {fileID: 3613567641014311022, guid: aa35326e084c5774b9fea1733afca70f, type: 3}
+--- !u!146 &1474618617 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 6063862590063103032, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1476157288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6046,6 +6103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _car: {fileID: 299688004844818821}
   _nitroBar: {fileID: 1506831488}
+--- !u!1 &1508662849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7335643203983263458, guid: 1152011439230c24faef477778127634, type: 3}
+  m_PrefabInstance: {fileID: 5700274407903796295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1523335122
 GameObject:
   m_ObjectHideFlags: 0
@@ -7236,8 +7298,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697935061}
-  m_LocalRotation: {x: 0.30886862, y: -0.29808408, z: 0.102593996, w: 0.8973409}
-  m_LocalPosition: {x: 29.881023, y: 37.419067, z: -29.803564}
+  m_LocalRotation: {x: 0.24980035, y: -0.22101976, z: 0.05866854, w: 0.94090813}
+  m_LocalPosition: {x: 11.203434, y: 9.163492, z: -12.083265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7256,9 +7318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6d3ff905719c845a4a6404bc4d4162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carTransform: {fileID: 543450653621877418}
-  followSpeed: 2
-  lookSpeed: 5.5
+  _carTransform: {fileID: 543450653621877418}
 --- !u!1 &1721768825
 GameObject:
   m_ObjectHideFlags: 0
@@ -9322,6 +9382,134 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112862776}
   m_Mesh: {fileID: 3613567641014311022, guid: aa35326e084c5774b9fea1733afca70f, type: 3}
+--- !u!1 &2117601933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2117601935}
+  - component: {fileID: 2117601934}
+  m_Layer: 0
+  m_Name: MainMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &2117601934
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117601933}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0085756e8fed1d64ba38139b5f1c5cfd, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.505
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.851532
+      value: 0.9005852
+      inSlope: -1.002004
+      outSlope: -1.002004
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &2117601935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117601933}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.6878242, y: 4.816947, z: 4.765831}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 724822311}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2129593745
 GameObject:
   m_ObjectHideFlags: 0
@@ -9995,10 +10183,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: MaxSpeed
-      value: 190
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: NitroBar
+      value: 
+      objectReference: {fileID: 1506831489}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _nitroBar
       value: 
       objectReference: {fileID: 1506831489}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
@@ -10010,23 +10202,91 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1041381122}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _nitroSound
+      value: 
+      objectReference: {fileID: 1041381122}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: CarSpeedText
       value: 
       objectReference: {fileID: 677710026}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _tireSkidRLW
+      value: 
+      objectReference: {fileID: 976561783}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _tireSkidRRW
+      value: 
+      objectReference: {fileID: 169057228}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: SteeringSpeed
       value: 0.585
       objectReference: {fileID: 0}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _carSpeedText
+      value: 
+      objectReference: {fileID: 677710026}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _rearLeftMesh
+      value: 
+      objectReference: {fileID: 702530769}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: CarEngineSound
       value: 
       objectReference: {fileID: 1693469554}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _frontLeftMesh
+      value: 
+      objectReference: {fileID: 685669376}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _rearRightMesh
+      value: 
+      objectReference: {fileID: 580421394}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _carEngineSound
+      value: 
+      objectReference: {fileID: 1693469554}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _frontRightMesh
+      value: 
+      objectReference: {fileID: 1508662849}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: TireScreechSound
       value: 
       objectReference: {fileID: 1765659090}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _rearLeftCollider
+      value: 
+      objectReference: {fileID: 1221895874}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _tireScreechSound
+      value: 
+      objectReference: {fileID: 1765659090}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _frontLeftCollider
+      value: 
+      objectReference: {fileID: 1474618617}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _particleSystemRLW
+      value: 
+      objectReference: {fileID: 1046826483}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _particleSystemRRW
+      value: 
+      objectReference: {fileID: 82259935}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _rearRightCollider
+      value: 
+      objectReference: {fileID: 992725465}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: NitroCollectedSound
+      value: 
+      objectReference: {fileID: 182226369}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _frontRightCollider
+      value: 
+      objectReference: {fileID: 768918285}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _nitroCollectedSound
       value: 
       objectReference: {fileID: 182226369}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}

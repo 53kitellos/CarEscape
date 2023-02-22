@@ -10,7 +10,7 @@ public class Sounds : MonoBehaviour
     [SerializeField] private AudioSource _finishSound;
     [SerializeField] private AudioSource _engineSound;
     [SerializeField] private AudioSource _tyreScreechSound;
-
+    [SerializeField] private AudioSource _mainSountrack;
 
     private void OnEnable()
     {
@@ -20,18 +20,19 @@ public class Sounds : MonoBehaviour
 
     private void PlayLoseSound()
     {
-        MuteCarSounds();
+        MuteMainSounds();
         _loseSound.Play();
     }
     private void PlayFinishSound()
     {
-        MuteCarSounds();
+        MuteMainSounds();
         _finishSound.Play();
     }
 
-    private void MuteCarSounds() 
+    private void MuteMainSounds() 
     {
         _engineSound.Stop();
         _tyreScreechSound.Stop();
+        _mainSountrack.Stop();
     }
 }

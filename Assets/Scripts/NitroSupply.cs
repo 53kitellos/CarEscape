@@ -5,28 +5,22 @@ using UnityEngine;
 public class NitroSupply : MonoBehaviour
 {
     private float _lifeTime = 3;
-    private float _currentLifeTime;
 
     private void Start()
     {
         NitroPointer.Instance.AddToList(this);
-    }
-
-    private void Update()
-    {
-        if (_currentLifeTime <= _lifeTime)
-        {
-            _currentLifeTime += Time.deltaTime;
-        }
-        else 
-        {
-            SelfDetroy();
-        }
+        StartCoroutine(LifeTime());
     }
 
     public void SelfDetroy() 
     {
         NitroPointer.Instance.RemoveFromList(this);
         Destroy(gameObject);
-    } 
+    }
+
+    private IEnumerator LifeTime()
+    {
+        yield return new WaitForSeconds(_lifeTime);
+        SelfDetroy();
+    }
 }

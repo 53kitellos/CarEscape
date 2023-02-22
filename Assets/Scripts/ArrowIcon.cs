@@ -27,7 +27,9 @@ public class ArrowIcon : MonoBehaviour
             return;
         
         _isShown = true;
-        StopAllCoroutines();
+        StopCoroutine(ShowProcess());
+        StopCoroutine(HideProcess());
+
         StartCoroutine(ShowProcess());
     }
 
@@ -37,7 +39,9 @@ public class ArrowIcon : MonoBehaviour
             return;
        
         _isShown = false;
-        StopAllCoroutines();
+        StopCoroutine(ShowProcess());
+        StopCoroutine(HideProcess());
+
         StartCoroutine(HideProcess());
     }
 
