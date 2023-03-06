@@ -36,10 +36,26 @@ public class PlayerCarControl : MonoBehaviour
      private bool _useSounds = true;
      private float _initialCarEngineSoundPitch;
 
+    //TOUCHINPUT
+    private bool _useTouchControls = false; // принудительно включить тач управление
+
+    [SerializeField] private GameObject _throttleButton;
+    [SerializeField] private GameObject _reverseButton;
+    [SerializeField] private GameObject _turnRightButton;
+    [SerializeField] private GameObject _turnLeftButton;
+    [SerializeField] private GameObject _handbrakeButton;
+    [SerializeField] private GameObject _nitroButton;
+    private TouchInput _throttlePTI;
+    private TouchInput _reversePTI;
+    private TouchInput _turnRightPTI;
+    private TouchInput _turnLeftPTI;
+    private TouchInput _handbrakePTI;
+    private TouchInput _nitroPTI;
+
     //CAR STATS
     private int _maxSpeed = 200;
     private int _maxReverseSpeed = 50;
-    private int _accelerationMultiplier = 8;
+    private int _accelerationMultiplier = 10;
     private int _maxSteeringAngle = 35;
     private int _brakeForce = 450;
     private int _decelerationMultiplier = 2;
@@ -48,7 +64,7 @@ public class PlayerCarControl : MonoBehaviour
     private int _nitroAcceleration = 150;
     private float _carSpeed;
     private float _steeringSpeed = 0.7f;
-    private float _spendNitroValue = -20;
+    private float _spendNitroValue = -25;
     private float _refillNirtoValue = 4;
     private float _steeringAxis;
     private float _throttleAxis;
@@ -161,6 +177,29 @@ public class PlayerCarControl : MonoBehaviour
             _tireSkidRRW.emitting = false;
           }
         }
+
+        if (_useTouchControls)
+        {
+            if (_throttleButton != null && _reverseButton != null &&
+            _turnRightButton != null && _turnLeftButton != null
+            && _handbrakeButton != null && _nitroButton != null)
+            {
+
+                _throttlePTI = _throttleButton.GetComponent<TouchInput>();
+                _reversePTI = _reverseButton.GetComponent<TouchInput>();
+                _turnLeftPTI = _turnLeftButton.GetComponent<TouchInput>();
+                _turnRightPTI = _turnRightButton.GetComponent<TouchInput>();
+                _handbrakePTI = _handbrakeButton.GetComponent<TouchInput>();
+                _nitroPTI = _nitroButton.GetComponent<TouchInput>();
+
+            }
+            else
+            {
+                String ex = "Touch controls are not completely set up. You must drag and drop your scene buttons in the" +
+                " PrometeoCarController component.";
+                Debug.LogWarning(ex);
+            }
+        }
     }
 
     private void Update()
@@ -168,82 +207,160 @@ public class PlayerCarControl : MonoBehaviour
       _carSpeed = (2 * Mathf.PI * _frontLeftCollider.radius * _frontLeftCollider.rpm * 60) / 1000;
       _localVelocityX = transform.InverseTransformDirection(_carRigidbody.velocity).x;
       _localVelocityZ = transform.InverseTransformDirection(_carRigidbody.velocity).z;
-        
-        if (Input.GetKey(KeyCode.W))
-        {
-            CancelInvoke("DecelerateCar");
-            _deceleratingCar = false;
-            GoForward(_accelerationMultiplier);
-        }
 
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
+        if (_useTouchControls)
         {
-            if (_nitroBar.TryGetNitro())
-            {
-                CancelInvoke("DecelerateCar");
-                _deceleratingCar = false;
-                GoForward(_nitroAcceleration);
-                NitroValueChanged?.Invoke(_spendNitroValue * Time.deltaTime, _maxNitroValue);
-            }
-            else 
+            if (_throttlePTI.buttonPressed)
             {
                 CancelInvoke("DecelerateCar");
                 _deceleratingCar = false;
                 GoForward(_accelerationMultiplier);
             }
-        }
 
-        if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            if (_nitroBar.TryGetNitro())
+            if (_nitroPTI.buttonPressed)
             {
-                _nitroSound.Play();
+                if (_nitroBar.TryGetNitro())
+                {
+                    _nitroSound.Play();
+                    CancelInvoke("DecelerateCar");
+                    _deceleratingCar = false;
+                    GoForward(_nitroAcceleration);
+                    NitroValueChanged?.Invoke(_spendNitroValue * Time.deltaTime, _maxNitroValue);
+                }
+                else
+                {
+                    CancelInvoke("DecelerateCar");
+                    _deceleratingCar = false;
+                    GoForward(_accelerationMultiplier);
+                }
             }
-        }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            CancelInvoke("DecelerateCar");
-            _deceleratingCar = false;
-            GoReverse();
-        }
+            if (_reversePTI.buttonPressed)
+            {
+                CancelInvoke("DecelerateCar");
+                _deceleratingCar = false;
+                GoReverse();
+            }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            TurnLeft();
-        }
+            if (_turnLeftPTI.buttonPressed)
+            {
+                TurnLeft();
+            }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            TurnRight();
-        }
+            if (_turnRightPTI.buttonPressed)
+            {
+                TurnRight();
+            }
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            CancelInvoke("DecelerateCar");
-            _deceleratingCar = false;
-            Handbrake();
-        }
+            if (_handbrakePTI.buttonPressed)
+            {
+                CancelInvoke("DecelerateCar");
+                _deceleratingCar = false;
+                Handbrake();
+            }
 
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            RecoverTraction();
-        }
+            if (!_handbrakePTI.buttonPressed)
+            {
+                RecoverTraction();
+            }
 
-        if ((!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)))
-        {
-            ThrottleOff();
-        }
+            if ((!_throttlePTI.buttonPressed && !_reversePTI.buttonPressed))
+            {
+                ThrottleOff();
+            }
 
-        if ((!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)) && !Input.GetKey(KeyCode.Space) && !_deceleratingCar)
-        {
-            InvokeRepeating("DecelerateCar", 0f, 0.1f);
-            _deceleratingCar = true;
-        }
+            if ((!_reversePTI.buttonPressed && !_throttlePTI.buttonPressed) && !_handbrakePTI.buttonPressed && !_deceleratingCar)
+            {
+                InvokeRepeating("DecelerateCar", 0f, 0.1f);
+                _deceleratingCar = true;
+            }
 
-        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && _steeringAxis != 0f)
+            if (!_turnLeftPTI.buttonPressed && !_turnRightPTI.buttonPressed && _steeringAxis != 0f)
+            {
+                ResetSteeringAngle();
+            }
+
+        }
+        else
         {
-            ResetSteeringAngle();
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                CancelInvoke("DecelerateCar");
+                _deceleratingCar = false;
+                GoForward(_accelerationMultiplier);
+            }
+
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
+            {
+                if (_nitroBar.TryGetNitro())
+                {
+                    CancelInvoke("DecelerateCar");
+                    _deceleratingCar = false;
+                    GoForward(_nitroAcceleration);
+                    NitroValueChanged?.Invoke(_spendNitroValue * Time.deltaTime, _maxNitroValue);
+                }
+                else
+                {
+                    CancelInvoke("DecelerateCar");
+                    _deceleratingCar = false;
+                    GoForward(_accelerationMultiplier);
+                }
+            }
+
+            if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if (_nitroBar.TryGetNitro())
+                {
+                    _nitroSound.Play();
+                }
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                CancelInvoke("DecelerateCar");
+                _deceleratingCar = false;
+                GoReverse();
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                TurnLeft();
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                TurnRight();
+            }
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                CancelInvoke("DecelerateCar");
+                _deceleratingCar = false;
+                Handbrake();
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                RecoverTraction();
+            }
+
+            if ((!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)))
+            {
+                ThrottleOff();
+            }
+
+            if ((!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)) && !Input.GetKey(KeyCode.Space) && !_deceleratingCar)
+            {
+                InvokeRepeating("DecelerateCar", 0f, 0.1f);
+                _deceleratingCar = true;
+            }
+
+            if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && _steeringAxis != 0f)
+            {
+                ResetSteeringAngle();
+            }
+
         }
 
         AnimateWheelMeshes();

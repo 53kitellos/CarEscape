@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour {
-
+public class CameraFollow : MonoBehaviour
+{
 	[SerializeField] private Transform _carTransform;
+
 	private float _followSpeed = 2;
 	private float _lookSpeed = 5;
 	private Vector3 _initialCameraPosition;
