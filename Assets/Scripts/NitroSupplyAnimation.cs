@@ -3,11 +3,11 @@ using System.Collections;
 
 public class NitroSupplyAnimation : MonoBehaviour
 {
-    private Vector3 _rotationAngle = new Vector3(0,0,10);
-    private Vector3 startScale = new Vector3(1,1,1);
-    private Vector3 endScale = new Vector3(1.5f, 1.5f, 1.5f);
+    private Vector3 _rotationAngle = new Vector3(0,10,0);
+    private Vector3 startScale = new Vector3(6,6,6);
+    private Vector3 endScale = new Vector3(10, 10, 10);
     private float _rotationSpeed = 10;
-    private float _scaleSpeed = 1;
+    private float _scaleSpeed = 0.7f;
     private float scaleRate = 0.5f;
     private float _scaleTimer;
     private bool scalingUp = true;
