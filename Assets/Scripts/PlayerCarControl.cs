@@ -55,11 +55,11 @@ public class PlayerCarControl : MonoBehaviour
     //CAR STATS
     private int _maxSpeed = 200;
     private int _maxReverseSpeed = 50;
-    private int _accelerationMultiplier = 10;
+    private int _accelerationMultiplier = 12;
     private int _maxSteeringAngle = 35;
     private int _brakeForce = 450;
     private int _decelerationMultiplier = 2;
-    private int _handbrakeDriftMultiplier = 6;
+    private int _handbrakeDriftMultiplier = 20;
     private int _maxNitroValue = 100;
     private int _nitroAcceleration = 150;
     private float _carSpeed;

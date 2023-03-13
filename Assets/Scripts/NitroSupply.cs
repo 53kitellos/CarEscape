@@ -9,7 +9,7 @@ public class NitroSupply : MonoBehaviour
     private void Start()
     {
         NitroPointer.Instance.AddToList(this);
-        StartCoroutine(LifeTime());
+       // StartCoroutine(LifeTime());
     }
 
     public void SelfDetroy() 

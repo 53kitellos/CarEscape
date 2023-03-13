@@ -29,8 +29,8 @@ public class Timer : MonoBehaviour
 
             if (_roundTime <= 0)
             {
-                _isEnded = true;
-                TimeEnded?.Invoke();
+                //_isEnded = true;
+                //TimeEnded?.Invoke();
             }
         }
     }
