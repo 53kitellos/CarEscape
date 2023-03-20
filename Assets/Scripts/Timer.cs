@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,32 +7,32 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private Text _timeLeft;
-    private float _roundTime = 45;
-    private bool _isEnded = false;
+    [SerializeField] private Text _timerValue;
+    [SerializeField] private Player _player;
 
-    public event UnityAction TimeEnded;
+    private float _currentTime = 0;
+    public float FinalTime { get; private set; }
 
     private void Start()
     {
-        if (_timeLeft != null)
+        _player.Finished += SetFinalTime;
+
+        if (_timerValue != null)
         {
-            _timeLeft.text = _roundTime.ToString();
+            _timerValue.text = _currentTime.ToString();
         }
     }
 
     private void Update()
     {
-        if (_isEnded == false)
-        {
-            _roundTime -= Time.deltaTime;
-            _timeLeft.text = Mathf.RoundToInt(_roundTime).ToString();
-
-            if (_roundTime <= 0)
-            {
-                //_isEnded = true;
-                //TimeEnded?.Invoke();
-            }
-        }
+        _currentTime += Time.deltaTime;
+        _timerValue.text = Math.Round(_currentTime, 2).ToString();
     }
+
+    private void SetFinalTime() 
+    {
+        FinalTime = _currentTime;
+    }
+
+    
 }

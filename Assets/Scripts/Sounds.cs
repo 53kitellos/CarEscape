@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Sounds : MonoBehaviour
@@ -14,7 +12,7 @@ public class Sounds : MonoBehaviour
 
     private void OnEnable()
     {
-        _timer.TimeEnded += PlayLoseSound;
+        //_timer.TimeEnded += PlayLoseSound;
         _player.Finished += PlayFinishSound;
     }
 

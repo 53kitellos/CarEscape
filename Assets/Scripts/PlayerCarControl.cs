@@ -17,8 +17,10 @@ public class PlayerCarControl : MonoBehaviour
     [SerializeField] private WheelCollider _rearRightCollider;
 
     //PARTICLE SYSTEMS
-    [SerializeField] private ParticleSystem _particleSystemRLW;
-    [SerializeField] private ParticleSystem _particleSystemRRW;
+    [SerializeField] private ParticleSystem _smokeSystemRLW;
+    [SerializeField] private ParticleSystem _smokeSystemRRW;
+    [SerializeField] private ParticleSystem _fireSystemRLW;
+    [SerializeField] private ParticleSystem _fireSystemRRW;
     [SerializeField] private TrailRenderer _tireSkidRLW;
     [SerializeField] private TrailRenderer _tireSkidRRW;
      private bool _useEffects = true;
@@ -158,14 +160,14 @@ public class PlayerCarControl : MonoBehaviour
 
         if(!_useEffects)
         {
-          if(_particleSystemRLW != null)
+          if(_smokeSystemRLW != null)
           {
-            _particleSystemRLW.Stop();
+            _smokeSystemRLW.Stop();
           }
 
-          if(_particleSystemRRW != null)
+          if(_smokeSystemRRW != null)
           {
-            _particleSystemRRW.Stop();
+            _smokeSystemRRW.Stop();
           }
 
           if(_tireSkidRLW != null)
@@ -173,10 +175,14 @@ public class PlayerCarControl : MonoBehaviour
             _tireSkidRLW.emitting = false;
           }
 
-          if(_tireSkidRRW != null){
+          if(_tireSkidRRW != null)
+          {
             _tireSkidRRW.emitting = false;
           }
         }
+
+        _fireSystemRLW.Stop();
+        _fireSystemRRW.Stop();
 
         if (_useTouchControls)
         {
@@ -313,6 +319,13 @@ public class PlayerCarControl : MonoBehaviour
                 if (_nitroBar.TryGetNitro())
                 {
                     _nitroSound.Play();
+                    _fireSystemRLW.Play();
+                    _fireSystemRRW.Play();
+                }
+                else 
+                {
+                    _fireSystemRLW.Stop();
+                    _fireSystemRRW.Stop();
                 }
             }
 
@@ -720,13 +733,13 @@ public class PlayerCarControl : MonoBehaviour
         {
           if(_isDrifting)
           {
-            _particleSystemRLW.Play();
-            _particleSystemRRW.Play();
+            _smokeSystemRLW.Play();
+            _smokeSystemRRW.Play();
           }
           else if(!_isDrifting)
           {
-            _particleSystemRLW.Stop();
-            _particleSystemRRW.Stop();
+            _smokeSystemRLW.Stop();
+            _smokeSystemRRW.Stop();
           }
         }
         catch(Exception ex)
@@ -754,14 +767,14 @@ public class PlayerCarControl : MonoBehaviour
       }
       else if(!_useEffects)
       {
-        if(_particleSystemRLW != null)
+        if(_smokeSystemRLW != null)
         {
-          _particleSystemRLW.Stop();
+          _smokeSystemRLW.Stop();
         }
 
-        if(_particleSystemRRW != null)
+        if(_smokeSystemRRW != null)
         {
-          _particleSystemRRW.Stop();
+          _smokeSystemRRW.Stop();
         }
 
         if(_tireSkidRLW != null)

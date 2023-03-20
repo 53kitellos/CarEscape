@@ -8,7 +8,7 @@ public class LoseScreenUI : MonoBehaviour
 
     private void Awake()
     {
-        _timer.TimeEnded += ShowLoseScreen;
+        //_timer.TimeEnded += ShowLoseScreen;
         gameObject.SetActive(false);
     }
 
