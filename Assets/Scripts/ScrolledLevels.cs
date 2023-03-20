@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScrollButtons : MonoBehaviour
+public class ScrolledLevels : MonoBehaviour
 {
     [SerializeField] private ScriptableObject[] _scriptableObjects;
     [SerializeField] private LevelView _levelView;
