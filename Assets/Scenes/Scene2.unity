@@ -2044,7 +2044,7 @@ PrefabInstance:
       objectReference: {fileID: 458977923}
     - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: FirstPlaceTime
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: ThirdPlaceTime
@@ -2052,7 +2052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: SecondPlaceTime
-      value: 25
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}

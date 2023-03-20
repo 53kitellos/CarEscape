@@ -22,22 +22,21 @@ public class LevelView : MonoBehaviour
         _startButton.interactable = levelUlocked;
 
         if (levelUlocked)
-        {
             _levelImage.color = Color.white;
-        }
         else 
-        {
             _levelImage.color = Color.grey;
-        }
 
         if (PlayerPrefs.GetInt($"medalsOnScene{level.LevelIndex}") == 1)
         {
             _bronzemedal.LiteItUp();
+            _silverMedal.LiteItDown();
+            _goldMedal.LiteItDown();
         }
         else if (PlayerPrefs.GetInt($"medalsOnScene{level.LevelIndex}") == 2)
         {
             _bronzemedal.LiteItUp();
             _silverMedal.LiteItUp();
+            _goldMedal.LiteItDown();
         }
         else if (PlayerPrefs.GetInt($"medalsOnScene{level.LevelIndex}") == 3)
         {
@@ -47,9 +46,9 @@ public class LevelView : MonoBehaviour
         }
         else 
         {
-            _goldMedal.LiteItDown();
-            _silverMedal.LiteItDown();
             _bronzemedal.LiteItDown();
+            _silverMedal.LiteItDown();
+            _goldMedal.LiteItDown();
         }
 
         _startButton.onClick.RemoveAllListeners();

@@ -63,7 +63,7 @@ public class FinishScreenUI : MonoBehaviour
             if (_medals < 3)
             {
                 _medals = 3;
-                //SetMedalsNumber(_medals);
+                SetMedalsNumber(_medals);
             }
         }
         else if (_timer.FinalTime <= SecondPlaceTime && _timer.FinalTime > FirstPlaceTime)
@@ -80,7 +80,7 @@ public class FinishScreenUI : MonoBehaviour
             if (_medals < 2) 
             {
                 _medals = 2;
-                //SetMedalsNumber(_medals);
+                SetMedalsNumber(_medals);
             }
         }
         else if (_timer.FinalTime <= ThirdPlaceTime && _timer.FinalTime > SecondPlaceTime) 
@@ -94,7 +94,7 @@ public class FinishScreenUI : MonoBehaviour
             if (_medals < 1)
             {
                 _medals = 1;
-                //SetMedalsNumber(_medals);
+                SetMedalsNumber(_medals);
             }
         }
 
@@ -106,21 +106,13 @@ public class FinishScreenUI : MonoBehaviour
             PlayerPrefs.SetInt("scenesOpened", SceneManager.GetActiveScene().buildIndex+1);
         }
 
-        /*if (_isOpenNextLevel && !PlayerPrefs.HasKey($"currentScene{SceneManager.GetActiveScene().buildIndex}")) 
-        {
-            PlayerPrefs.SetInt($"currentScene{SceneManager.GetActiveScene().buildIndex}",SceneManager.GetActiveScene().buildIndex);
-        }*/
-
         Time.timeScale = 0;
     }
 
-    /*private void SetMedalsNumber(int medals) 
+    private void SetMedalsNumber(int medals) 
     {
-        if (!PlayerPrefs.HasKey($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}"))
-        {
-            PlayerPrefs.SetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}", medals);
-        }
-    }*/
+        PlayerPrefs.SetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}", medals);
+    }
 
     public void LoadLevelsMenu()
     {
