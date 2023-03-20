@@ -5738,6 +5738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIFinishScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3687709519613092323, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3687709519613092332, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5838,18 +5842,6 @@ PrefabInstance:
       propertyPath: _placeRate
       value: 
       objectReference: {fileID: 1617950072}
-    - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
-      propertyPath: FirstPlaceTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
-      propertyPath: ThirdPlaceTime
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
-      propertyPath: SecondPlaceTime
-      value: 22
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
 --- !u!1001 &1119824046
@@ -6276,15 +6268,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5165029064790548408, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5165029064790548408, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5165029064790548408, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.385
       objectReference: {fileID: 0}
     - target: {fileID: 5165029064834625810, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
       propertyPath: m_Pivot.x
@@ -11100,33 +11092,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1223808613}
     - target: {fileID: 5767138713251627027, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5767138713251627027, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1559712981}
     - target: {fileID: 5767138713251627027, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OpenMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5767138713251627027, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: CarInfoUI, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5767138713251627027, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5767138713251627027, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1559712980}
-    - target: {fileID: 5767138713251627027, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
 --- !u!1001 &8458299034726319964
