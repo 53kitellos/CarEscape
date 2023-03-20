@@ -98,7 +98,8 @@ public class FinishScreenUI : MonoBehaviour
             }
         }
 
-        _nextLVL.interactable = _isOpenNextLevel;
+        if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1)
+            _nextLVL.interactable = _isOpenNextLevel;
 
         if (_isOpenNextLevel) 
         {
