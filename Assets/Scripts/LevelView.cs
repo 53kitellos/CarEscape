@@ -12,8 +12,10 @@ public class LevelView : MonoBehaviour
     [SerializeField] private Medal _silverMedal;
     [SerializeField] private Medal _bronzemedal;
 
+    private int _currentIndex;
     public void ShowLevel(Level level) 
     {
+        _currentIndex = level.LevelIndex;
         _levelImage.sprite = level.LevelImage;
         _levelNumber.text = level.LevelIndex.ToString();
 
@@ -51,7 +53,12 @@ public class LevelView : MonoBehaviour
             _goldMedal.LiteItDown();
         }
 
-        _startButton.onClick.RemoveAllListeners();
-        _startButton.onClick.AddListener(() => SceneManager.LoadScene(level.LoadScene.name));
+        //_startButton.onClick.RemoveAllListeners();
+        //_startButton.onClick.AddListener(() => SceneManager.LoadScene(level.LoadScene.name));
+    }
+
+    public void LoadCurrentLevel() 
+    {
+        SceneManager.LoadScene(_currentIndex);
     }
 }
