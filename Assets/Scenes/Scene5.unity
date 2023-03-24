@@ -11488,6 +11488,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5165029064790548408, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165029064790548408, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165029064790548408, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.385
+      objectReference: {fileID: 0}
     - target: {fileID: 5165029064834625810, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -11579,6 +11591,10 @@ PrefabInstance:
     - target: {fileID: 5165029064834625814, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
       propertyPath: m_Name
       value: UiCarInfo(WASD)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5165029064834625814, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5165029064989139514, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
       propertyPath: _player
