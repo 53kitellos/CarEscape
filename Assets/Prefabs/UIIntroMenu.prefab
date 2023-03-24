@@ -69,8 +69,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041C\u0415\u041D\u042E"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 58
+  m_fontSize: 55.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -368,8 +368,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.89019614, g: 0.7058824, b: 0, a: 1}
-    m_HighlightedColor: {r: 0.8962264, g: 0.86240655, b: 0.7905393, a: 1}
+    m_NormalColor: {r: 1, g: 0.7280057, b: 0.19339621, a: 1}
+    m_HighlightedColor: {r: 0.9245283, g: 0.88964045, b: 0.8155037, a: 1}
     m_PressedColor: {r: 0.8018868, g: 0.5660144, b: 0, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -403,12 +403,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5165029064834625811, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CarInfoUI, Assembly-CSharp
         m_MethodName: OpenMenu
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5165029064834625814, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -640,8 +640,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0415\u0414\u0415\u041C"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.35
+  m_fontSize: 53.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -922,10 +922,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u0421\u041E\u0411\u0415\u0420\u0418\u0422\u0415 \u041D\u0415\u041E\u0411\u0425\u041E\u0414\u0418\u041C\u042B\u0419
+    \u0417\u0410\u041F\u0410\u0421 \u042D\u041D\u0415\u0420\u0413\u0418\u0418 \u0414\u041B\u042F
+    \u041F\u0420\u042B\u0416\u041A\u0410 \u0418 \u041F\u041E\u041A\u0418\u041D\u042C\u0422\u0415
+    \u0410\u0420\u0415\u041D\u0423"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -949,7 +952,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 52.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

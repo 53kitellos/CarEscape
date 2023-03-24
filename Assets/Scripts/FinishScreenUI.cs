@@ -43,7 +43,7 @@ public class FinishScreenUI : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         var showingDelay = new WaitForSeconds(1);
 
-        _finalTime.text = ($"TIME: {Math.Round(_timer.FinalTime, 2)}");
+        _finalTime.text = ($" {Math.Round(_timer.FinalTime, 2)}");
 
         if (_timer.FinalTime <= FirstPlaceTime)
         {
