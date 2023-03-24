@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 namespace Lean.Localization
 {
 	/// <summary>This component will update a UI.Text component with localized text, or use a fallback if none is found.</summary>
 	[ExecuteInEditMode]
 	[DisallowMultipleComponent]
-	[RequireComponent(typeof(TMP_Text))]
+	[RequireComponent(typeof(Text))]
 	[HelpURL(LeanLocalization.HelpUrlPrefix + "LeanLocalizedText")]
 	[AddComponentMenu(LeanLocalization.ComponentPathPrefix + "Localized Text")]
 	public class LeanLocalizedText : LeanLocalizedBehaviour
@@ -18,7 +18,7 @@ namespace Lean.Localization
 		public override void UpdateTranslation(LeanTranslation translation)
 		{
 			// Get the Text component attached to this GameObject
-			var text = GetComponent<TMP_Text>();
+			var text = GetComponent<Text>();
 
 			// Use translation?
 			if (translation != null && translation.Data is string)
@@ -38,7 +38,7 @@ namespace Lean.Localization
 			if (string.IsNullOrEmpty(FallbackText) == true)
 			{
 				// Get the Text component attached to this GameObject
-				var text = GetComponent<TMP_Text>();
+				var text = GetComponent<Text>();
 
 				// Copy current text to fallback
 				FallbackText = text.text;

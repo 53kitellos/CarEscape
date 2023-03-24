@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ public class FinishScreenUI : MonoBehaviour
     [SerializeField] private PlaceIconPopUp _place2Image;
     [SerializeField] private PlaceIconPopUp _place3Image;
     [SerializeField] private Button _nextLVL;
-    [SerializeField] private Text _finalTime;
+    [SerializeField] private TMP_Text _finalTime;
     [SerializeField] public float FirstPlaceTime;
     [SerializeField] public float SecondPlaceTime;
     [SerializeField] public float ThirdPlaceTime;
