@@ -2182,10 +2182,10 @@ Transform:
   - {fileID: 1947331600}
   - {fileID: 203385752}
   - {fileID: 680619438}
-  - {fileID: 582808024}
   - {fileID: 2027531737}
   - {fileID: 2116950871}
   - {fileID: 966862255}
+  - {fileID: 582808024}
   - {fileID: 160539192}
   - {fileID: 1415112249}
   - {fileID: 667700665}
@@ -5666,6 +5666,10 @@ PrefabInstance:
     - target: {fileID: 3687709519613092323, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: m_Name
       value: UIFinishScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687709519613092323, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3687709519613092332, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: m_Pivot.x
@@ -10476,9 +10480,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1910189818850459158, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.138916
+      objectReference: {fileID: 0}
     - target: {fileID: 5767138712970079024, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
       propertyPath: m_Name
       value: UIIntroMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767138712970079024, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5767138712970079028, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
       propertyPath: m_Pivot.x
