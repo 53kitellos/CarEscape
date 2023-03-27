@@ -67,7 +67,7 @@ public class PlayerCarControl : MonoBehaviour
     private float _carSpeed;
     private float _steeringSpeed = 0.7f;
     private float _spendNitroValue = -25;
-    private float _refillNirtoValue = 4;
+    private float _refillNirtoValue = 2;
     private float _steeringAxis;
     private float _throttleAxis;
     private float _driftingAxis;

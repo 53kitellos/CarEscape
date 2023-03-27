@@ -851,9 +851,9 @@ MonoBehaviour:
   _place3Image: {fileID: 3687709521082084045}
   _nextLVL: {fileID: 7724208663560005650}
   _finalTime: {fileID: 1610870133069760122}
-  FirstPlaceTime: 2
-  SecondPlaceTime: 22
-  ThirdPlaceTime: 26
+  FirstPlaceTime: 22.05
+  SecondPlaceTime: 24.32
+  ThirdPlaceTime: 25.48
 --- !u!1 &3687709519834087289
 GameObject:
   m_ObjectHideFlags: 0
