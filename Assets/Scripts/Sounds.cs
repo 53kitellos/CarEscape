@@ -29,6 +29,7 @@ public class Sounds : MonoBehaviour
     {
         _engineSound.Stop();
         _tyreScreechSound.Stop();
+        _tyreScreechSound.volume = 0;
         _mainSountrack.Stop();
     }
 }
