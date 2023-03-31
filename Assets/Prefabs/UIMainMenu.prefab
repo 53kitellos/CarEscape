@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 39518779}
   - component: {fileID: 39518778}
+  - component: {fileID: 8613100426029810521}
   m_Layer: 0
   m_Name: Click
   m_TagString: Untagged
@@ -128,6 +129,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8613100426029810521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39518777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9750d5e74107f814895cbc47bf20ae5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _click: {fileID: 39518778}
 --- !u!1 &660944907
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,8 +186,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ab4921bfc00ccf54d9a1a399aaaf795a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.514
-  m_Pitch: 2.05
+  m_Volume: 0.176
+  m_Pitch: 3
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -583,9 +597,9 @@ RectTransform:
   m_Father: {fileID: 5378492978102330592}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.9001465, y: 496}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 20, y: -44}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2930962755809592491
@@ -658,9 +672,9 @@ RectTransform:
   m_Father: {fileID: 5378492978102330592}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -127, y: 491}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -127, y: -49}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4830660972872809961
@@ -2768,9 +2782,9 @@ RectTransform:
   m_Father: {fileID: 5378492978102330592}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -820, y: -49}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 187, y: -49}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8943054789487681274

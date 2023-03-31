@@ -172,7 +172,7 @@ public class FinishScreenUI : MonoBehaviour
     public void LoadNextLevel() 
     {
         #if UNITY_WEBGL
-        ShowAdv();
+        //ShowAdv();
         #endif
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

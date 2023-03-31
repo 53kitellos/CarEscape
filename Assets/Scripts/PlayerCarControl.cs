@@ -19,8 +19,8 @@ public class PlayerCarControl : MonoBehaviour
     //PARTICLE SYSTEMS
     [SerializeField] private ParticleSystem _smokeSystemRLW;
     [SerializeField] private ParticleSystem _smokeSystemRRW;
-    [SerializeField] private ParticleSystem _fireSystemRLW;
-    [SerializeField] private ParticleSystem _fireSystemRRW;
+    //[SerializeField] private ParticleSystem _fireSystemRLW;
+    //[SerializeField] private ParticleSystem _fireSystemRRW;
     [SerializeField] private TrailRenderer _tireSkidRLW;
     [SerializeField] private TrailRenderer _tireSkidRRW;
      private bool _useEffects = true;
@@ -56,6 +56,7 @@ public class PlayerCarControl : MonoBehaviour
 
     //CAR STATS
     private int _maxSpeed = 140;
+    private int _maxAccelerationSpeed = 230;
     private int _maxReverseSpeed = 50;
     private int _accelerationMultiplier = 12;
     private int _maxSteeringAngle = 35;
@@ -65,7 +66,7 @@ public class PlayerCarControl : MonoBehaviour
     private int _maxNitroValue = 100;
     private int _nitroAcceleration = 150;
     private float _carSpeed;
-    private float _steeringSpeed = 0.7f;
+    private float _steeringSpeed = 0.8f;
     private float _spendNitroValue = -25;
     private float _refillNirtoValue = 2;
     private float _steeringAxis;
@@ -181,8 +182,8 @@ public class PlayerCarControl : MonoBehaviour
           }
         }
 
-        _fireSystemRLW.Stop();
-        _fireSystemRRW.Stop();
+        //_fireSystemRLW.Stop();
+        //_fireSystemRRW.Stop();
 
         if (_useTouchControls)
         {
@@ -208,7 +209,7 @@ public class PlayerCarControl : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
       _carSpeed = (2 * Mathf.PI * _frontLeftCollider.radius * _frontLeftCollider.rpm * 60) / 1000;
       _localVelocityX = transform.InverseTransformDirection(_carRigidbody.velocity).x;
@@ -220,7 +221,7 @@ public class PlayerCarControl : MonoBehaviour
             {
                 CancelInvoke("DecelerateCar");
                 _deceleratingCar = false;
-                GoForward(_accelerationMultiplier);
+                GoForward(_accelerationMultiplier, _maxSpeed);
             }
 
             if (_nitroPTI.buttonPressed)
@@ -230,14 +231,14 @@ public class PlayerCarControl : MonoBehaviour
                     _nitroSound.Play();
                     CancelInvoke("DecelerateCar");
                     _deceleratingCar = false;
-                    GoForward(_nitroAcceleration);
+                    GoForward(_nitroAcceleration, _maxAccelerationSpeed);
                     NitroValueChanged?.Invoke(_spendNitroValue * Time.deltaTime, _maxNitroValue);
                 }
                 else
                 {
                     CancelInvoke("DecelerateCar");
                     _deceleratingCar = false;
-                    GoForward(_accelerationMultiplier);
+                    GoForward(_accelerationMultiplier, _maxSpeed);
                 }
             }
 
@@ -294,7 +295,7 @@ public class PlayerCarControl : MonoBehaviour
             {
                 CancelInvoke("DecelerateCar");
                 _deceleratingCar = false;
-                GoForward(_accelerationMultiplier);
+                GoForward(_accelerationMultiplier, _maxSpeed);
             }
 
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
@@ -303,14 +304,15 @@ public class PlayerCarControl : MonoBehaviour
                 {
                     CancelInvoke("DecelerateCar");
                     _deceleratingCar = false;
-                    GoForward(_nitroAcceleration);
+                    GoForward(_nitroAcceleration, _maxAccelerationSpeed);
                     NitroValueChanged?.Invoke(_spendNitroValue * Time.deltaTime, _maxNitroValue);
                 }
                 else
                 {
                     CancelInvoke("DecelerateCar");
                     _deceleratingCar = false;
-                    GoForward(_accelerationMultiplier);
+                    GoForward(_accelerationMultiplier, _maxSpeed);
+                    _smokeSystemRLW.Stop();
                 }
             }
 
@@ -319,13 +321,9 @@ public class PlayerCarControl : MonoBehaviour
                 if (_nitroBar.TryGetNitro())
                 {
                     _nitroSound.Play();
-                    _fireSystemRLW.Play();
-                    _fireSystemRRW.Play();
-                }
-                else 
-                {
-                    _fireSystemRLW.Stop();
-                    _fireSystemRRW.Stop();
+                    _smokeSystemRLW.Play();
+                    //_fireSystemRLW.Play();
+                    //_fireSystemRRW.Play();
                 }
             }
 
@@ -528,7 +526,7 @@ public class PlayerCarControl : MonoBehaviour
       }
     }
 
-    private void GoForward(int accelerationValue)
+    private void GoForward(int accelerationValue, int maxSpeed)
     {
       if(Mathf.Abs(_localVelocityX) > 2.5f)
       {
@@ -554,7 +552,7 @@ public class PlayerCarControl : MonoBehaviour
       }
       else
       {
-        if(Mathf.RoundToInt(_carSpeed) < _maxSpeed)
+        if(Mathf.RoundToInt(_carSpeed) < maxSpeed)
         {
           _frontLeftCollider.brakeTorque = 0;
           _frontLeftCollider.motorTorque = (accelerationValue * 50f) * _throttleAxis;

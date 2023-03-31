@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelIndex: 7
   LevelImage: {fileID: 21300000, guid: ccd832e30fad7924d814b618d8fd4eaa, type: 3}
-  LoadScene: {fileID: 102900000, guid: f2a1ef7b789930942a054d9fec06ee5b, type: 3}
+  LoadScene: {fileID: 102900000, guid: 55fd808c7383ec046b514735e2c15555, type: 3}
