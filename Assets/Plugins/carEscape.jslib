@@ -1,15 +1,13 @@
 mergeInto(LibraryManager.library, 
 {
-
   SetPlayerData: function ()
   {
     myGameInstance.SendMessage('ForYandex', 'SetName',player.getName());
-    myGameInstance.SendMessage('ForYandex', 'SetIcon',player.getPhoto("small")); 
   },
 
   SaveInfoExtern: function (date)
-  {
-    var dataString = UTF8ToString(date);
+  { 
+    var dateString = UTF8ToString(date);
     var myobj = JSON.parse(dateString);
     player.setData(myobj);
     console.log(myobj);
@@ -19,16 +17,24 @@ mergeInto(LibraryManager.library,
   {
     player.getData().then(_date =>{
       const myJSON = JSON.stringify(_date);
-      myGameInstance.SendMessage('Progress', 'LoadPlayerInfo',myJSON);
+      myGameInstance.SendMessage('Progress', 'LoadPlayerInfo', myJSON);
       console.log(myJSON);
     });
   },
 
-  SetInLeaderbord : function(value){
+  SetInLeaderbord : function(value,levelIndex){
     ysdk.getLeaderboards()
     .then(lb => {
-    // Без extraData
-      lb.setLeaderboardScore('BestPeopleTime', value);
+      console.log(value); 
+      if (levelIndex == 1) {console.log("SOHRANENIE11111111111"); lb.setLeaderboardScore('Level1Time', value);}
+      if (levelIndex == 2) {console.log("SOHRANENIE22222222222"); lb.setLeaderboardScore('Level2Time', value);}
+      if (levelIndex == 3) {console.log("SOHRANENIE33333333333"); lb.setLeaderboardScore('Level3Time', value);}
+      if (levelIndex == 4) {lb.setLeaderboardScore('Level4Time', value);}
+      if (levelIndex == 5) {lb.setLeaderboardScore('Level5Time', value);}
+      if (levelIndex == 6) {lb.setLeaderboardScore('Level6Time', value);}
+      if (levelIndex == 7) {lb.setLeaderboardScore('Level7Time', value);}
+      if (levelIndex == 8) {lb.setLeaderboardScore('Level8Time', value);}
+      if (levelIndex == 9) {lb.setLeaderboardScore('Level9Time', value);}
     });
   },
 

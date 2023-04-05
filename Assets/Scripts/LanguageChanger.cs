@@ -14,12 +14,18 @@ public class LanguageChanger : MonoBehaviour
 
     private int _flagIndex;
     public string UserLanguage;
-
+  
     private void Awake()
     {
 #if UNITY_WEBGL
         UserLanguage = GetLang();
-        SetUserLanguage();
+
+        if (PlayerPrefs.GetInt("isLanguageInditfied",0) == 0 ) 
+        {
+            SetUserLanguage();
+            PlayerPrefs.SetInt("isLanguageInditfied", 1);
+        }
+        
 #endif
     }
 

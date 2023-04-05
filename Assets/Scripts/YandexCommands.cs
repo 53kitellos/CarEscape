@@ -3,32 +3,30 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class YandexCommands : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _playerName;
-    [SerializeField] private RawImage _playerIcon;
     [SerializeField] private Button _rateButton;
-
-    private bool _isRateDone = false; 
-
+ 
     [DllImport("__Internal")]
     private static extern void SetPlayerData();
 
     [DllImport("__Internal")]
     private static extern void AskGameFeedback();
 
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("RateIsDone", 0) == 1) 
+        {
+            _rateButton.gameObject.SetActive(false);
+        } 
+    }
+
     public void GetFeedback()
     {
         AskGameFeedback();
-
-        if (_isRateDone)
-        {
-            _rateButton.gameObject.SetActive(false);
-        }
-
     }
 
     public void GetPlayerInfo() 
@@ -41,16 +39,13 @@ public class YandexCommands : MonoBehaviour
         _playerName.text = name;
     }
 
-    public void SetIcon(string URL) 
-    {
-        StartCoroutine(DownLoadImage(URL));
-    }
-
     public void RateDone(bool isDone) 
     {
-        _isRateDone = isDone;
+        if (isDone)
+            PlayerPrefs.SetInt("RateIsDone", 1);
     }
 
+    /*
     private IEnumerator DownLoadImage(string mediaURL)
     {
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(mediaURL);
@@ -60,5 +55,5 @@ public class YandexCommands : MonoBehaviour
             Debug.Log(request.error);
         else
             _playerIcon.texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
-    }
+    }*/
 }

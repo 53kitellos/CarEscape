@@ -5571,6 +5571,10 @@ PrefabInstance:
       propertyPath: _finishScreenValues
       value: 
       objectReference: {fileID: 1417465214}
+    - target: {fileID: 5165029064339191741, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5165029064790548408, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -5671,6 +5675,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 543450653621877420}
+    - target: {fileID: 5165029064834625811, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+      propertyPath: _touchButtons
+      value: 
+      objectReference: {fileID: 1092154765}
     - target: {fileID: 5165029064834625814, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
       propertyPath: m_Name
       value: UiCarInfo(WASD)
@@ -5693,6 +5701,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+--- !u!1 &1092154764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5165029064419325734, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+  m_PrefabInstance: {fileID: 1092154763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1092154765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092154764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3893bd59f0fe86c42bd748e8fa02c458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1092154766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1225266926769333531, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+  m_PrefabInstance: {fileID: 1092154763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1098846009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10698,7 +10728,7 @@ PrefabInstance:
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: _nitroButton
       value: 
-      objectReference: {fileID: 4597129196982652262, guid: cfc7216dee58b4b4f8063b68a8633714, type: 3}
+      objectReference: {fileID: 1092154766}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: _tireSkidRLW
       value: 

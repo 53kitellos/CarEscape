@@ -406,7 +406,7 @@ MonoBehaviour:
   _turnRightButton: {fileID: 0}
   _turnLeftButton: {fileID: 0}
   _handbrakeButton: {fileID: 0}
-  _nitroButton: {fileID: 4597129196982652262, guid: cfc7216dee58b4b4f8063b68a8633714, type: 3}
+  _nitroButton: {fileID: 0}
 --- !u!114 &4253331554153755732
 MonoBehaviour:
   m_ObjectHideFlags: 0

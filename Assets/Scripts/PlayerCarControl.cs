@@ -19,8 +19,6 @@ public class PlayerCarControl : MonoBehaviour
     //PARTICLE SYSTEMS
     [SerializeField] private ParticleSystem _smokeSystemRLW;
     [SerializeField] private ParticleSystem _smokeSystemRRW;
-    //[SerializeField] private ParticleSystem _fireSystemRLW;
-    //[SerializeField] private ParticleSystem _fireSystemRRW;
     [SerializeField] private TrailRenderer _tireSkidRLW;
     [SerializeField] private TrailRenderer _tireSkidRRW;
      private bool _useEffects = true;
@@ -37,9 +35,6 @@ public class PlayerCarControl : MonoBehaviour
     [SerializeField] private AudioSource _nitroCollectedSound;
      private bool _useSounds = true;
      private float _initialCarEngineSoundPitch;
-
-    //TOUCHINPUT
-    private bool _useTouchControls = false; // принудительно включить тач управление
 
     [SerializeField] private GameObject _throttleButton;
     [SerializeField] private GameObject _reverseButton;
@@ -66,7 +61,7 @@ public class PlayerCarControl : MonoBehaviour
     private int _maxNitroValue = 100;
     private int _nitroAcceleration = 150;
     private float _carSpeed;
-    private float _steeringSpeed = 0.8f;
+    private float _steeringSpeed = 0.5f;
     private float _spendNitroValue = -25;
     private float _refillNirtoValue = 2;
     private float _steeringAxis;
@@ -182,23 +177,18 @@ public class PlayerCarControl : MonoBehaviour
           }
         }
 
-        //_fireSystemRLW.Stop();
-        //_fireSystemRRW.Stop();
-
-        if (_useTouchControls)
+        if (PlayerPrefs.GetInt("touchpadOn")==1)
         {
             if (_throttleButton != null && _reverseButton != null &&
             _turnRightButton != null && _turnLeftButton != null
             && _handbrakeButton != null && _nitroButton != null)
             {
-
                 _throttlePTI = _throttleButton.GetComponent<TouchInput>();
                 _reversePTI = _reverseButton.GetComponent<TouchInput>();
                 _turnLeftPTI = _turnLeftButton.GetComponent<TouchInput>();
                 _turnRightPTI = _turnRightButton.GetComponent<TouchInput>();
                 _handbrakePTI = _handbrakeButton.GetComponent<TouchInput>();
                 _nitroPTI = _nitroButton.GetComponent<TouchInput>();
-
             }
             else
             {
@@ -209,22 +199,15 @@ public class PlayerCarControl : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
       _carSpeed = (2 * Mathf.PI * _frontLeftCollider.radius * _frontLeftCollider.rpm * 60) / 1000;
       _localVelocityX = transform.InverseTransformDirection(_carRigidbody.velocity).x;
       _localVelocityZ = transform.InverseTransformDirection(_carRigidbody.velocity).z;
 
-        if (_useTouchControls)
+        if (PlayerPrefs.GetInt("touchpadOn") == 1)
         {
-            if (_throttlePTI.buttonPressed)
-            {
-                CancelInvoke("DecelerateCar");
-                _deceleratingCar = false;
-                GoForward(_accelerationMultiplier, _maxSpeed);
-            }
-
-            if (_nitroPTI.buttonPressed)
+            if (_nitroPTI.buttonPressed && _throttlePTI.buttonPressed)
             {
                 if (_nitroBar.TryGetNitro())
                 {
@@ -241,6 +224,13 @@ public class PlayerCarControl : MonoBehaviour
                     GoForward(_accelerationMultiplier, _maxSpeed);
                 }
             }
+            else if (_throttlePTI.buttonPressed)
+            {
+                CancelInvoke("DecelerateCar");
+                _deceleratingCar = false;
+                GoForward(_accelerationMultiplier, _maxSpeed);
+            }
+            
 
             if (_reversePTI.buttonPressed)
             {
@@ -291,12 +281,6 @@ public class PlayerCarControl : MonoBehaviour
         else
         {
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                CancelInvoke("DecelerateCar");
-                _deceleratingCar = false;
-                GoForward(_accelerationMultiplier, _maxSpeed);
-            }
 
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
             {
@@ -307,14 +291,14 @@ public class PlayerCarControl : MonoBehaviour
                     GoForward(_nitroAcceleration, _maxAccelerationSpeed);
                     NitroValueChanged?.Invoke(_spendNitroValue * Time.deltaTime, _maxNitroValue);
                 }
-                else
-                {
-                    CancelInvoke("DecelerateCar");
-                    _deceleratingCar = false;
-                    GoForward(_accelerationMultiplier, _maxSpeed);
-                    _smokeSystemRLW.Stop();
-                }
             }
+            else if (Input.GetKey(KeyCode.W))
+            {
+                CancelInvoke("DecelerateCar");
+                _deceleratingCar = false;
+                GoForward(_accelerationMultiplier, _maxSpeed);
+            }
+
 
             if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftShift))
             {
@@ -322,8 +306,6 @@ public class PlayerCarControl : MonoBehaviour
                 {
                     _nitroSound.Play();
                     _smokeSystemRLW.Play();
-                    //_fireSystemRLW.Play();
-                    //_fireSystemRRW.Play();
                 }
             }
 
@@ -528,27 +510,27 @@ public class PlayerCarControl : MonoBehaviour
 
     private void GoForward(int accelerationValue, int maxSpeed)
     {
-      if(Mathf.Abs(_localVelocityX) > 2.5f)
+        if (Mathf.Abs(_localVelocityX) > 2.5f)
       {
-        _isDrifting = true;
-        DriftCarPS();
+            _isDrifting = true;
+            DriftCarPS();
       }
       else
       {
-        _isDrifting = false;
-        DriftCarPS();
+            _isDrifting = false;
+            DriftCarPS();
       }
 
       _throttleAxis = _throttleAxis + (Time.deltaTime * 3f);
 
       if(_throttleAxis > 1f)
       {
-        _throttleAxis = 1f;
+            _throttleAxis = 1f;
       }
 
       if(_localVelocityZ < -1f)
-      {
-        Brakes();
+        {
+            Brakes();
       }
       else
       {

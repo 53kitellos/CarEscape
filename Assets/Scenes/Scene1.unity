@@ -194,27 +194,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2765453268038761090, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 2765453268038761090, guid: 1152011439230c24faef477778127634, type: 3}
-      propertyPath: m_SidewaysFriction.m_ExtremumValue
-      value: 1.8
+      propertyPath: m_SidewaysFriction.m_ExtremumSlip
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3739968509392709667, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 3739968509392709667, guid: 1152011439230c24faef477778127634, type: 3}
-      propertyPath: m_SidewaysFriction.m_ExtremumValue
-      value: 1.8
+      propertyPath: m_SidewaysFriction.m_ExtremumSlip
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4369136208295534932, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4369136208295534932, guid: 1152011439230c24faef477778127634, type: 3}
-      propertyPath: m_SidewaysFriction.m_ExtremumValue
-      value: 1.8
+      propertyPath: m_SidewaysFriction.m_ExtremumSlip
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4889247345876581463, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: m_Name
@@ -273,6 +273,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 971679999}
     - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
+      propertyPath: _nitroButton
+      value: 
+      objectReference: {fileID: 814163967}
+    - target: {fileID: 5418892447568858562, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: _carSpeedText
       value: 
       objectReference: {fileID: 790275718}
@@ -310,11 +314,11 @@ PrefabInstance:
       objectReference: {fileID: 1652560425}
     - target: {fileID: 6063862590063103032, guid: 1152011439230c24faef477778127634, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
-      value: 1.8
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6063862590063103032, guid: 1152011439230c24faef477778127634, type: 3}
-      propertyPath: m_SidewaysFriction.m_ExtremumValue
-      value: 2
+      propertyPath: m_SidewaysFriction.m_ExtremumSlip
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1152011439230c24faef477778127634, type: 3}
@@ -2639,6 +2643,11 @@ Transform:
   m_Father: {fileID: 357199828}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &814163967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1225266926769333531, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
+  m_PrefabInstance: {fileID: 1236949543}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &833585143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3190,10 +3199,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIFinishScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 3687709519613092323, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3687709519613092332, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3294,26 +3299,6 @@ PrefabInstance:
       propertyPath: _placeRate
       value: 
       objectReference: {fileID: 1617950072}
-    - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
-      propertyPath: FirstPlaceTime
-      value: 8.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
-      propertyPath: ThirdPlaceTime
-      value: 15.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
-      propertyPath: SecondPlaceTime
-      value: 10.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087710141848445960, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
-      propertyPath: m_text
-      value: "\u25BC\u041E\u0422\u041A\u0420\u042B\u0422\u042C\u25BC "
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087710141848445960, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
-      propertyPath: m_fontSize
-      value: 26.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
 --- !u!1001 &1119824046
@@ -4046,10 +4031,6 @@ PrefabInstance:
       propertyPath: _finishScreenValues
       value: 
       objectReference: {fileID: 1218783977}
-    - target: {fileID: 5165029064419325734, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5165029064834625810, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4150,10 +4131,6 @@ PrefabInstance:
       propertyPath: _car
       value: 
       objectReference: {fileID: 127109308}
-    - target: {fileID: 5165029065717118711, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e31428e0a0a0c44a66028d0d8096b7, type: 3}
 --- !u!1 &1284334568 stripped
@@ -5911,10 +5888,6 @@ PrefabInstance:
     - target: {fileID: 5767138712970079024, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
       propertyPath: m_Name
       value: UIIntroMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5767138712970079024, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5767138712970079028, guid: 4d2aca06f7f64b84a986b8b9e4008c47, type: 3}
       propertyPath: m_Pivot.x

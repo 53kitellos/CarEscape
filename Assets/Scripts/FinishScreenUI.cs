@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 public class FinishScreenUI : MonoBehaviour
 {
     [DllImport("__Internal")]
@@ -16,7 +15,7 @@ public class FinishScreenUI : MonoBehaviour
     private static extern void ShowExternRewardAdv();
 
     [DllImport("__Internal")]
-    private static extern void SetInLeaderbord(float value);
+    private static extern void SetInLeaderbord(float value, int levelIndex);
 
     [SerializeField] private Player _player;
     [SerializeField] private Timer _timer;
@@ -48,6 +47,7 @@ public class FinishScreenUI : MonoBehaviour
     {
         _applause.Play();   
         gameObject.SetActive(true);
+        StopCoroutine(ShowPlaces());
         StartCoroutine(ShowPlaces());
     }
 
@@ -57,7 +57,6 @@ public class FinishScreenUI : MonoBehaviour
         var showingDelay = new WaitForSeconds(1);
 
         SetBestTime();
-
         _finalTime.text = ($" {Math.Round(_timer.FinalTime, 2)}");
         _bestTime.text = ($" {Math.Round(PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}"), 2)}"); 
 
@@ -116,16 +115,12 @@ public class FinishScreenUI : MonoBehaviour
             }
         }
 
-        if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1)
-            _nextLVL.interactable = _isOpenNextLevel;
-
         if (_isOpenNextLevel)
         {
             PlayerPrefs.SetInt("scenesOpened", SceneManager.GetActiveScene().buildIndex + 1);
 
             #if UNITY_WEBGL
             ProgressInfo.Instance.PlayerInfo.OpenedLevels = SceneManager.GetActiveScene().buildIndex + 1;
-            Debug.Log(ProgressInfo.Instance.PlayerInfo.OpenedLevels);
             #endif
         }
         else
@@ -133,6 +128,12 @@ public class FinishScreenUI : MonoBehaviour
             yield return showingDelay;
             if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1)
                 _openNextLVL.gameObject.SetActive(true);
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1) 
+        {
+            yield return showingDelay;
+            _nextLVL.interactable = _isOpenNextLevel;
         }
 
         Time.timeScale = 0;
@@ -150,18 +151,33 @@ public class FinishScreenUI : MonoBehaviour
             if (_timer.FinalTime < PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}"))
             {
                 PlayerPrefs.SetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}", _timer.FinalTime);
-                //ProgressInfo.Instance.PlayerInfo.BestTime = _timer.FinalTime;
-                //SetInLeaderbord(ProgressInfo.Instance.PlayerInfo.BestTime);
+                SetInLeaderbord( Mathf.CeilToInt(1000 * _timer.FinalTime), SceneManager.GetActiveScene().buildIndex);
             }
         }
         else 
         {
             PlayerPrefs.SetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}", _timer.FinalTime);
-            //ProgressInfo.Instance.PlayerInfo.BestTime = _timer.FinalTime;
-            //SetInLeaderbord(ProgressInfo.Instance.PlayerInfo.BestTime);
+            SetInLeaderbord(Mathf.CeilToInt(1000 * _timer.FinalTime), SceneManager.GetActiveScene().buildIndex);
         }
 
-        //ProgressInfo.Instance.SavePlayerInfo();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            ProgressInfo.Instance.PlayerInfo.Level1BestTime = PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+            ProgressInfo.Instance.PlayerInfo.Level2BestTime = PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+            ProgressInfo.Instance.PlayerInfo.Level3BestTime = PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+            ProgressInfo.Instance.PlayerInfo.Level4BestTime = PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 5)
+            ProgressInfo.Instance.PlayerInfo.Level5BestTime = PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 6)
+            ProgressInfo.Instance.PlayerInfo.Level6BestTime = PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 7)
+            ProgressInfo.Instance.PlayerInfo.Level7BestTime = PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 8)
+            ProgressInfo.Instance.PlayerInfo.Level8BestTime = PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 9)
+            ProgressInfo.Instance.PlayerInfo.Level9BestTime = PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}");
     }
 
     public void LoadLevelsMenu()
@@ -171,10 +187,13 @@ public class FinishScreenUI : MonoBehaviour
 
     public void LoadNextLevel() 
     {
-        #if UNITY_WEBGL
-        //ShowAdv();
-        #endif
-
+#if UNITY_WEBGL
+        if (_player.CanShowAdv())
+        {
+            ShowAdv();
+            PlayerPrefs.SetFloat("currentTimer", 60);
+        }
+#endif
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
     }
@@ -188,5 +207,10 @@ public class FinishScreenUI : MonoBehaviour
         PlayerPrefs.SetInt("scenesOpened", SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
+    }
+
+    public void Save() 
+    {
+        ProgressInfo.Instance.SavePlayerInfo();
     }
 }

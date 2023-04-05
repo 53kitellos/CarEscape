@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000012398, y: 81}
-  m_SizeDelta: {x: 285.6341, y: 61.2243}
+  m_AnchoredPosition: {x: 0.000025272, y: 65}
+  m_SizeDelta: {x: 252.823, y: 48.474}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5260926679942107894
 CanvasRenderer:
@@ -99,7 +99,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0.60232866, b: 0.990566, a: 0.4392157}
+    m_NormalColor: {r: 0.9607844, g: 0.69803923, b: 0.18431373, a: 1}
     m_HighlightedColor: {r: 0.9245283, g: 0.88964045, b: 0.8155037, a: 1}
     m_PressedColor: {r: 0.58717513, g: 0.70427257, b: 0.8584906, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041C\u0415\u041D\u042E"
+  m_text: MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -320,8 +320,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000035286, y: 0.0832}
-  m_SizeDelta: {x: 303.27, y: 63.9942}
+  m_AnchoredPosition: {x: -0.000068661, y: 0.000090837}
+  m_SizeDelta: {x: 263.05, y: 56.384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1942473468766632216
 CanvasRenderer:
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "*\u043E\u0442\u0437\u044B\u0432"
+  m_text: '*feedback'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -378,13 +378,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.7
+  m_fontSize: 47.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -717,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5767138713721222737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -923,7 +923,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0415\u0414\u0415\u041C"
+  m_text: RIDE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -1207,11 +1207,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421\u041E\u0411\u0415\u0420\u0418\u0422\u0415 \u041D\u0415\u041E\u0411\u0425\u041E\u0414\u0418\u041C\u042B\u0419
-    \u0417\u0410\u041F\u0410\u0421 \u042D\u041D\u0415\u0420\u0413\u0418\u0418 \u0414\u041B\u042F
-    \u041F\u0420\u042B\u0416\u041A\u0410 \u0418 \u041F\u041E\u041A\u0418\u041D\u042C\u0422\u0415
-    \u0410\u0420\u0415\u041D\u0423\n\n (WASD -\u0423\u041F\u0420\u0410\u0412\u041B\u0415\u041D\u0418\u0415,
-    SPACE - \u0420\u0423\u0427\u041D\u0418\u041A, SHIFT - \u041D\u0418\u0422\u0420\u041E)"
+  m_text: 'COLLECT THE NECESSARY ENERGY TO ACCELERATE AND GET OUT OF THE ARENA
+
+
+    (WASD
+    - MOVING, SPACE - HANDBRAKE, SHIFT - NITRO)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -1238,7 +1238,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.15
+  m_fontSize: 57.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

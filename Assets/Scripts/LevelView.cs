@@ -21,7 +21,6 @@ public class LevelView : MonoBehaviour
         _levelNumber.text = level.LevelIndex.ToString();
 
         bool levelUlocked = PlayerPrefs.GetInt("scenesOpened", 1) >= level.LevelIndex;
-        //ProgressInfo.Instance.PlayerInfo.OpenedLevels = PlayerPrefs.GetInt("scenesOpened", 1);
 
         _lockImage.SetActive(!levelUlocked);
         _startButton.interactable = levelUlocked;
