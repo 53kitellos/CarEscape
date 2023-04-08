@@ -1,7 +1,6 @@
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class PlayerInfo 
@@ -16,6 +15,16 @@ public class PlayerInfo
     public float Level7BestTime = 100;
     public float Level8BestTime = 100;
     public float Level9BestTime = 100;
+    public int medalsOnScene1 = 0;
+    public int medalsOnScene2 = 0;
+    public int medalsOnScene3 = 0; 
+    public int medalsOnScene4 = 0;
+    public int medalsOnScene5 = 0; 
+    public int medalsOnScene6 = 0; 
+    public int medalsOnScene7 = 0;
+    public int medalsOnScene8 = 0;
+    public int medalsOnScene9 = 0;
+
 }
 
 public class ProgressInfo : MonoBehaviour
@@ -59,9 +68,7 @@ public class ProgressInfo : MonoBehaviour
     public void LoadPlayerInfo(string value)
     {
         PlayerInfo = JsonUtility.FromJson<PlayerInfo>(value);
-
         PlayerPrefs.SetInt("scenesOpened", PlayerInfo.OpenedLevels);
-
         PlayerPrefs.SetFloat("bestTimeOnScene1", PlayerInfo.Level1BestTime);
         PlayerPrefs.SetFloat("bestTimeOnScene2", PlayerInfo.Level2BestTime);
         PlayerPrefs.SetFloat("bestTimeOnScene3", PlayerInfo.Level3BestTime);
@@ -72,6 +79,14 @@ public class ProgressInfo : MonoBehaviour
         PlayerPrefs.SetFloat("bestTimeOnScene8", PlayerInfo.Level8BestTime);
         PlayerPrefs.SetFloat("bestTimeOnScene9", PlayerInfo.Level9BestTime);
 
-        //_playerInfoText.text = PlayerInfo.OpenedLevels + "\n" + PlayerInfo.Level1BestTime + "\n" + PlayerInfo.Level2BestTime + "\n" + PlayerInfo.Level3BestTime + "\n" + PlayerInfo.Level4BestTime + "\n" + PlayerInfo.Level5BestTime + "\n" + PlayerInfo.Level6BestTime + "\n" + PlayerInfo.Level7BestTime + "\n" + PlayerInfo.Level8BestTime + "\n" + PlayerInfo.Level9BestTime ;
+        PlayerPrefs.SetInt("medalsOnScene1", PlayerInfo.medalsOnScene1);
+        PlayerPrefs.SetInt("medalsOnScene2", PlayerInfo.medalsOnScene2);
+        PlayerPrefs.SetInt("medalsOnScene3", PlayerInfo.medalsOnScene3);
+        PlayerPrefs.SetInt("medalsOnScene4", PlayerInfo.medalsOnScene4);
+        PlayerPrefs.SetInt("medalsOnScene5", PlayerInfo.medalsOnScene5);
+        PlayerPrefs.SetInt("medalsOnScene6", PlayerInfo.medalsOnScene6);
+        PlayerPrefs.SetInt("medalsOnScene7", PlayerInfo.medalsOnScene7);
+        PlayerPrefs.SetInt("medalsOnScene8", PlayerInfo.medalsOnScene8);
+        PlayerPrefs.SetInt("medalsOnScene9", PlayerInfo.medalsOnScene9);
     }
 }

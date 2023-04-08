@@ -60,8 +60,10 @@ public class PlayerCarControl : MonoBehaviour
     private int _handbrakeDriftMultiplier = 10;
     private int _maxNitroValue = 100;
     private int _nitroAcceleration = 150;
+    private float _hardnessWASD = 10f;
+    private float _hardnessTouchInput = 5f;
     private float _carSpeed;
-    private float _steeringSpeed = 0.5f;
+    private float _steeringSpeed = 0.7f;
     private float _spendNitroValue = -25;
     private float _refillNirtoValue = 2;
     private float _steeringAxis;
@@ -241,12 +243,12 @@ public class PlayerCarControl : MonoBehaviour
 
             if (_turnLeftPTI.buttonPressed)
             {
-                TurnLeft();
+                TurnLeft(_hardnessTouchInput);
             }
 
             if (_turnRightPTI.buttonPressed)
             {
-                TurnRight();
+                TurnRight(_hardnessTouchInput);
             }
 
             if (_handbrakePTI.buttonPressed)
@@ -318,12 +320,12 @@ public class PlayerCarControl : MonoBehaviour
 
             if (Input.GetKey(KeyCode.A))
             {
-                TurnLeft();
+                TurnLeft(_hardnessWASD);
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                TurnRight();
+                TurnRight(_hardnessWASD);
             }
 
             if (Input.GetKey(KeyCode.Space))
@@ -425,9 +427,9 @@ public class PlayerCarControl : MonoBehaviour
       }
     }
 
-    private void TurnLeft()
+    private void TurnLeft(float hardnessForce)
     {
-      _steeringAxis = _steeringAxis - (Time.deltaTime * 10f * _steeringSpeed);
+      _steeringAxis = _steeringAxis - (Time.deltaTime * hardnessForce * _steeringSpeed);
 
       if(_steeringAxis < -1f)
       {
@@ -439,9 +441,9 @@ public class PlayerCarControl : MonoBehaviour
       _frontRightCollider.steerAngle = Mathf.Lerp(_frontRightCollider.steerAngle, steeringAngle, _steeringSpeed);
     }
 
-    public void TurnRight()
+    public void TurnRight(float hardnessForce)
     {
-      _steeringAxis = _steeringAxis + (Time.deltaTime * 10f * _steeringSpeed);
+      _steeringAxis = _steeringAxis + (Time.deltaTime * hardnessForce * _steeringSpeed);
 
       if(_steeringAxis > 1f)
       {
@@ -457,11 +459,11 @@ public class PlayerCarControl : MonoBehaviour
     {
       if(_steeringAxis < 0f)
       {
-        _steeringAxis = _steeringAxis + (Time.deltaTime * 10f * _steeringSpeed);
+        _steeringAxis = _steeringAxis + (Time.deltaTime * 20f * _steeringSpeed);
       }
       else if(_steeringAxis > 0f)
       {
-        _steeringAxis = _steeringAxis - (Time.deltaTime * 10f * _steeringSpeed);
+        _steeringAxis = _steeringAxis - (Time.deltaTime * 20f * _steeringSpeed);
       }
 
       if(Mathf.Abs(_frontLeftCollider.steerAngle) < 1f)
@@ -510,7 +512,7 @@ public class PlayerCarControl : MonoBehaviour
 
     private void GoForward(int accelerationValue, int maxSpeed)
     {
-        if (Mathf.Abs(_localVelocityX) > 2.5f)
+      if (Mathf.Abs(_localVelocityX) > 2.5f)
       {
             _isDrifting = true;
             DriftCarPS();

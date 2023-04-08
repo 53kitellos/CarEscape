@@ -14,7 +14,7 @@ public class LevelView : MonoBehaviour
 
     private int _currentIndex;
 
-    public void ShowLevel(Level level) 
+       public void ShowLevel(Level level) 
     {
         _currentIndex = level.LevelIndex;
         _levelImage.sprite = level.LevelImage;

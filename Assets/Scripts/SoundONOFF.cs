@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,21 +7,32 @@ public class SoundONOFF : MonoBehaviour
     [SerializeField] private Sprite _soundOnIcon;
     [SerializeField] private Sprite _soundOffIcon;
 
-    private bool _isOn = true;
-
-    public void ChangeVolume() 
+    private void Awake()
     {
-        if (_isOn)
-        {
-            _onOffButton.image.sprite = _soundOffIcon;
-            AudioListener.volume = 0f;
-            _isOn = false;
-        }
-        else 
+        if (PlayerPrefs.GetInt("SoundOn", 1) == 1)
         {
             _onOffButton.image.sprite = _soundOnIcon;
             AudioListener.volume = 1f;
-            _isOn = true;
+        }
+        else 
+        {
+            _onOffButton.image.sprite = _soundOffIcon;
+            AudioListener.volume = 0f;
+        }
+    }
+    public void ChangeVolume() 
+    {
+        if (PlayerPrefs.GetInt("SoundOn",1) == 1)
+        {
+            _onOffButton.image.sprite = _soundOffIcon;
+            AudioListener.volume = 0f;
+            PlayerPrefs.SetInt("SoundOn", 0);
+        }
+        else if (PlayerPrefs.GetInt("SoundOn") == 0)
+        {
+            _onOffButton.image.sprite = _soundOnIcon;
+            AudioListener.volume = 1f;
+            PlayerPrefs.SetInt("SoundOn", 1);
         }
     }
 }

@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class YandexCommands : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _playerName;
-    [SerializeField] private Button _rateButton;
+    //[SerializeField] private Button _rateButton;
  
     [DllImport("__Internal")]
     private static extern void SetPlayerData();
@@ -16,12 +15,28 @@ public class YandexCommands : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void AskGameFeedback();
 
+    [DllImport("__Internal")]
+    private static extern string InitUserDevice();
+
+    public string UserDevice;
+
     private void Awake()
     {
-        if (PlayerPrefs.GetInt("RateIsDone", 0) == 1) 
+        #if UNITY_WEBGL
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            _rateButton.gameObject.SetActive(false);
-        } 
+            UserDevice = InitUserDevice();
+
+            if (UserDevice == "desktop")
+            {
+                PlayerPrefs.SetInt("touchpadOn", 0);
+            }
+            else if (UserDevice == "mobile")
+            {
+                PlayerPrefs.SetInt("touchpadOn", 1);
+            }
+        }
+#endif
     }
 
     public void GetFeedback()
@@ -38,22 +53,4 @@ public class YandexCommands : MonoBehaviour
     {
         _playerName.text = name;
     }
-
-    public void RateDone(bool isDone) 
-    {
-        if (isDone)
-            PlayerPrefs.SetInt("RateIsDone", 1);
-    }
-
-    /*
-    private IEnumerator DownLoadImage(string mediaURL)
-    {
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture(mediaURL);
-        yield return request.SendWebRequest();
-
-        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
-            Debug.Log(request.error);
-        else
-            _playerIcon.texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
-    }*/
 }

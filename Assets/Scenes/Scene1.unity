@@ -3195,6 +3195,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 730218059982525080, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 27.732056
+      objectReference: {fileID: 0}
     - target: {fileID: 3687709519613092323, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: m_Name
       value: UIFinishScreen
@@ -3299,6 +3303,14 @@ PrefabInstance:
       propertyPath: _placeRate
       value: 
       objectReference: {fileID: 1617950072}
+    - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
+      propertyPath: ThirdPlaceTime
+      value: 10.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
+      propertyPath: SecondPlaceTime
+      value: 9.54
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
 --- !u!1001 &1119824046

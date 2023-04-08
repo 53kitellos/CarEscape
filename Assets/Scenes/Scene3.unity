@@ -6364,15 +6364,15 @@ PrefabInstance:
       objectReference: {fileID: 1617950072}
     - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: FirstPlaceTime
-      value: 18.47
+      value: 18.72
       objectReference: {fileID: 0}
     - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: ThirdPlaceTime
-      value: 34.11
+      value: 25.87
       objectReference: {fileID: 0}
     - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: SecondPlaceTime
-      value: 26.12
+      value: 22.12
       objectReference: {fileID: 0}
     - target: {fileID: 8087710141848445960, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: m_text

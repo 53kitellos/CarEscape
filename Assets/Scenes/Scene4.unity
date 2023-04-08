@@ -1381,11 +1381,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: ThirdPlaceTime
-      value: 30.11
+      value: 27.95
       objectReference: {fileID: 0}
     - target: {fileID: 3687709519613092333, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}
       propertyPath: SecondPlaceTime
-      value: 25.5
+      value: 25.53
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b0bce9500b2e5b468b639a130a653ef, type: 3}

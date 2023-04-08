@@ -15,7 +15,7 @@ public class FinishScreenUI : MonoBehaviour
     private static extern void ShowExternRewardAdv();
 
     [DllImport("__Internal")]
-    private static extern void SetInLeaderbord(float value, int levelIndex);
+    private static extern void SetInLeaderbord(int value, int levelIndex);
 
     [SerializeField] private Player _player;
     [SerializeField] private Timer _timer;
@@ -142,6 +142,27 @@ public class FinishScreenUI : MonoBehaviour
     private void SetMedalsNumber(int medals) 
     {
         PlayerPrefs.SetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}", medals);
+#if UNITY_WEBGL
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            ProgressInfo.Instance.PlayerInfo.medalsOnScene1 = PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+            ProgressInfo.Instance.PlayerInfo.medalsOnScene2 = PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 3)
+            ProgressInfo.Instance.PlayerInfo.medalsOnScene3 = PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+            ProgressInfo.Instance.PlayerInfo.medalsOnScene4 = PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 5)
+            ProgressInfo.Instance.PlayerInfo.medalsOnScene5 = PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 6)
+            ProgressInfo.Instance.PlayerInfo.medalsOnScene6 = PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}"); 
+        if (SceneManager.GetActiveScene().buildIndex == 7)
+            ProgressInfo.Instance.PlayerInfo.medalsOnScene7 = PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 8)
+            ProgressInfo.Instance.PlayerInfo.medalsOnScene8 = PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}");
+        if (SceneManager.GetActiveScene().buildIndex == 9)
+            ProgressInfo.Instance.PlayerInfo.medalsOnScene9 = PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}");
+#endif
+
     }
 
     private void SetBestTime() 
@@ -182,17 +203,37 @@ public class FinishScreenUI : MonoBehaviour
 
     public void LoadLevelsMenu()
     {
+#if UNITY_WEBGL
+        if (PlayerPrefs.GetInt("countAdvMainMenu", 1) == 1)
+        {
+            PlayerPrefs.SetInt("countAdvMainMenu", 2);
+        }
+        else if (PlayerPrefs.GetInt("countAdvMainMenu") == 5)
+        {
+            ShowAdv();
+            PlayerPrefs.SetInt("countAdvMainMenu", 1);
+        }
+        else 
+        {
+            PlayerPrefs.SetInt("countAdvMainMenu", PlayerPrefs.GetInt("countAdvMainMenu")+1);
+        }
+#endif
         SceneManager.LoadScene(0);
     }
 
     public void LoadNextLevel() 
     {
 #if UNITY_WEBGL
-        if (_player.CanShowAdv())
+        if (PlayerPrefs.GetFloat("countAdv", 1) % 2 == 1)
         {
             ShowAdv();
-            PlayerPrefs.SetFloat("currentTimer", 60);
+            PlayerPrefs.SetFloat("countAdv", 2);
         }
+        else 
+        {
+            PlayerPrefs.SetFloat("countAdv", 1);
+        }
+
 #endif
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
