@@ -15,15 +15,15 @@ public class PlayerInfo
     public float Level7BestTime = 100;
     public float Level8BestTime = 100;
     public float Level9BestTime = 100;
-    public int medalsOnScene1 = 0;
-    public int medalsOnScene2 = 0;
-    public int medalsOnScene3 = 0; 
-    public int medalsOnScene4 = 0;
-    public int medalsOnScene5 = 0; 
-    public int medalsOnScene6 = 0; 
-    public int medalsOnScene7 = 0;
-    public int medalsOnScene8 = 0;
-    public int medalsOnScene9 = 0;
+    public int medalsOnScene1 ;
+    public int medalsOnScene2 ;
+    public int medalsOnScene3 ; 
+    public int medalsOnScene4 ;
+    public int medalsOnScene5 ; 
+    public int medalsOnScene6 ; 
+    public int medalsOnScene7 ;
+    public int medalsOnScene8 ;
+    public int medalsOnScene9 ;
 
 }
 

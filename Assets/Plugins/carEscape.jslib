@@ -10,15 +10,27 @@ mergeInto(LibraryManager.library,
     var dateString = UTF8ToString(date);
     var myobj = JSON.parse(dateString);
     player.setData(myobj);
-    console.log(myobj);
   },
 
   LoadInfoExtern: function ()
   {
-    player.getData().then(_date =>{
+    player.getData()
+    .then(_date =>
+    {
+      console.log("------------then vipolnilsya");
+      
       const myJSON = JSON.stringify(_date);
       myGameInstance.SendMessage('Progress', 'LoadPlayerInfo', myJSON);
-      console.log(myJSON);
+    })
+    .catch(err => 
+    {
+      console.log("************catch vipolnilsya");
+
+      var dateString = UTF8ToString("1sohranenie"); 
+      var myobj = JSON.parse(dateString);
+      player.setData(myobj);
+      console.log(myobj);
+
     });
   },
 
@@ -26,9 +38,9 @@ mergeInto(LibraryManager.library,
     ysdk.getLeaderboards()
     .then(lb => {
       console.log(value); 
-      if (levelIndex == 1) {console.log("SOHRANENIE11111111111"); lb.setLeaderboardScore('Level1Time', value);}
-      if (levelIndex == 2) {console.log("SOHRANENIE22222222222"); lb.setLeaderboardScore('Level2Time', value);}
-      if (levelIndex == 3) {console.log("SOHRANENIE33333333333"); lb.setLeaderboardScore('Level3Time', value);}
+      if (levelIndex == 1) {lb.setLeaderboardScore('LevelTime1', value);}
+      if (levelIndex == 2) {lb.setLeaderboardScore('Level2Time', value);}
+      if (levelIndex == 3) {lb.setLeaderboardScore('Level3Time', value);}
       if (levelIndex == 4) {lb.setLeaderboardScore('Level4Time', value);}
       if (levelIndex == 5) {lb.setLeaderboardScore('Level5Time', value);}
       if (levelIndex == 6) {lb.setLeaderboardScore('Level6Time', value);}

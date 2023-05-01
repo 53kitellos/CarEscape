@@ -25,20 +25,19 @@ public class FinishScreenUI : MonoBehaviour
     [SerializeField] private PlaceIconPopUp _place2Image;
     [SerializeField] private PlaceIconPopUp _place3Image;
     [SerializeField] private Button _nextLVL;
-    [SerializeField] private Button _openNextLVL;
+    //[SerializeField] private Button _openNextLVL;
     [SerializeField] private TMP_Text _finalTime;
     [SerializeField] private TMP_Text _bestTime;
     [SerializeField] public float FirstPlaceTime;
     [SerializeField] public float SecondPlaceTime;
     [SerializeField] public float ThirdPlaceTime;
 
-    private bool _isOpenNextLevel = false;
-    private int _medals = 0;
+    private bool _isMedalGets = false;
 
     private void Awake()
     {
         _player.Finished += ShowScreen;
-        _openNextLVL.gameObject.SetActive(false);
+        //_openNextLVL.gameObject.SetActive(false);
         gameObject.SetActive(false);
         _nextLVL.interactable = false;
     }
@@ -75,12 +74,11 @@ public class FinishScreenUI : MonoBehaviour
             _placeRate.Play();
             _place1Image.ShowIcon();
 
-            _isOpenNextLevel = true;
+            _isMedalGets = true;
 
-            if (_medals < 3)
+            if (PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}") < 3)
             {
-                _medals = 3;
-                SetMedalsNumber(_medals);
+                SetMedalsNumber(3);
             }
         }
         else if (_timer.FinalTime <= SecondPlaceTime && _timer.FinalTime > FirstPlaceTime)
@@ -92,12 +90,11 @@ public class FinishScreenUI : MonoBehaviour
             _placeRate.Play();
             _place2Image.ShowIcon();
 
-            _isOpenNextLevel = true;
+            _isMedalGets = true;
 
-            if (_medals < 2) 
+            if (PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}") < 2) 
             {
-                _medals = 2;
-                SetMedalsNumber(_medals);
+                SetMedalsNumber(2);
             }
         }
         else if (_timer.FinalTime <= ThirdPlaceTime && _timer.FinalTime > SecondPlaceTime) 
@@ -106,16 +103,27 @@ public class FinishScreenUI : MonoBehaviour
             _placeRate.Play();
             _place3Image.ShowIcon();
 
-            _isOpenNextLevel = true;
+            _isMedalGets = true;
 
-            if (_medals < 1)
+            if (PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}") < 1)
             {
-                _medals = 1;
-                SetMedalsNumber(_medals);
+                SetMedalsNumber(1);
             }
         }
 
-        if (_isOpenNextLevel)
+        if (PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}") != 0)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+            {
+                _nextLVL.interactable = false;
+            }
+            else 
+            {
+                _nextLVL.interactable = true;
+            }
+        }
+
+        if (_isMedalGets)
         {
             PlayerPrefs.SetInt("scenesOpened", SceneManager.GetActiveScene().buildIndex + 1);
 
@@ -123,19 +131,20 @@ public class FinishScreenUI : MonoBehaviour
             ProgressInfo.Instance.PlayerInfo.OpenedLevels = SceneManager.GetActiveScene().buildIndex + 1;
             #endif
         }
-        else
+        /*else
         {
-            yield return showingDelay;
-            if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1)
-                _openNextLVL.gameObject.SetActive(true);
-        }
+            if (PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}") == 0) 
+            {
+                yield return showingDelay;
 
-        if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1) 
-        {
-            yield return showingDelay;
-            _nextLVL.interactable = _isOpenNextLevel;
-        }
+                if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1)
+                    _openNextLVL.gameObject.SetActive(true);
+            }
+        }*/
 
+#if UNITY_WEBGL
+        Save();
+#endif
         Time.timeScale = 0;
     }
 
@@ -162,7 +171,6 @@ public class FinishScreenUI : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 9)
             ProgressInfo.Instance.PlayerInfo.medalsOnScene9 = PlayerPrefs.GetInt($"medalsOnScene{SceneManager.GetActiveScene().buildIndex}");
 #endif
-
     }
 
     private void SetBestTime() 
@@ -201,22 +209,24 @@ public class FinishScreenUI : MonoBehaviour
             ProgressInfo.Instance.PlayerInfo.Level9BestTime = PlayerPrefs.GetFloat($"bestTimeOnScene{SceneManager.GetActiveScene().buildIndex}");
     }
 
+    private void Save()
+    {
+        ProgressInfo.Instance.SavePlayerInfo();
+    }
+
     public void LoadLevelsMenu()
     {
 #if UNITY_WEBGL
-        if (PlayerPrefs.GetInt("countAdvMainMenu", 1) == 1)
-        {
-            PlayerPrefs.SetInt("countAdvMainMenu", 2);
-        }
-        else if (PlayerPrefs.GetInt("countAdvMainMenu") == 5)
+        if (PlayerPrefs.GetFloat("countAdv", 1) % 2 == 1)
         {
             ShowAdv();
-            PlayerPrefs.SetInt("countAdvMainMenu", 1);
+            PlayerPrefs.SetFloat("countAdv", 2);
         }
-        else 
+        else
         {
-            PlayerPrefs.SetInt("countAdvMainMenu", PlayerPrefs.GetInt("countAdvMainMenu")+1);
+            PlayerPrefs.SetFloat("countAdv", 1);
         }
+
 #endif
         SceneManager.LoadScene(0);
     }
@@ -239,19 +249,17 @@ public class FinishScreenUI : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void ShowRewardAdv() 
+    /*public void ShowRewardAdv() 
     {
-        #if UNITY_WEBGL
-        ShowExternRewardAdv();
-        #endif
-
         PlayerPrefs.SetInt("scenesOpened", SceneManager.GetActiveScene().buildIndex + 1);
+
+#if UNITY_WEBGL
+        ProgressInfo.Instance.PlayerInfo.OpenedLevels = SceneManager.GetActiveScene().buildIndex + 1;
+        ShowExternRewardAdv();
+        Save();
+#endif
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
-    }
-
-    public void Save() 
-    {
-        ProgressInfo.Instance.SavePlayerInfo();
-    }
+    }*/
 }
